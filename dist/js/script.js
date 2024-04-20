@@ -18,6 +18,25 @@ window.onscroll = function(){
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollToTop = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTop.style.display = 'block';
+        } else {
+            scrollToTop.style.display = 'none';
+        }
+    });
+
+    scrollToTop.addEventListener('click', function() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    });
+    
+});
+
+
 // document.addEventListener('DOMContentLoaded', function() {
 //     const parallaxBg = document.querySelector('#clients');
     
