@@ -39,6 +39,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
+const form = document.getElementById('contact-form');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_92to05c', 'template_dt1wm5o', this)
+    .then(() => {
+        alert('Message sent successfully!');
+        form.reset();
+    }, (err) => {
+        alert('Oops! Something went wrong...', err);
+    });
+});
 
 // document.addEventListener('DOMContentLoaded', function() {
 //     const parallaxBg = document.querySelector('#clients');
