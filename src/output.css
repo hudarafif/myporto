@@ -792,10 +792,6 @@ video {
   overflow: hidden;
 }
 
-.\!scroll-smooth {
-  scroll-behavior: smooth !important;
-}
-
 .scroll-smooth {
   scroll-behavior: smooth;
 }
@@ -1117,6 +1113,7 @@ video {
 
 body{
   font-family: 'Inter' sans-serif;
+  scroll-behavior: smooth;
 }
 
 .navbar-fixed {
@@ -1175,24 +1172,19 @@ body{
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.hover\:bg-dark:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-primary:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(147 51 234 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-white:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-secondary:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-dark:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+.hover\:text-dark:hover {
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity));
 }
 
 .hover\:text-primary:hover {
@@ -1203,11 +1195,6 @@ body{
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:text-dark:hover {
-  --tw-text-opacity: 1;
-  color: rgb(15 23 42 / var(--tw-text-opacity));
 }
 
 .hover\:opacity-100:hover {
