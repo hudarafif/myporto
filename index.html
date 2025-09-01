@@ -7,35 +7,8 @@
     <title>Rafif Huda | Web Developer Portfolio</title>
     <!-- Tailwind CSS CDN for instant use -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom styles for hamburger menu and sticky navbar */
-        .hamburger-line {
-            @apply w-[30px] h-[2px] my-2 block bg-slate-800 dark:bg-white;
-        }
-
-        .hamburger-active>span:nth-child(1) {
-            @apply rotate-45;
-        }
-
-        .hamburger-active>span:nth-child(2) {
-            @apply scale-0;
-        }
-
-        .hamburger-active>span:nth-child(3) {
-            @apply -rotate-45;
-        }
-
-        /* The 'navbar-fixed' class is added via JavaScript on scroll */
-        .navbar-fixed {
-            @apply fixed z-[9999] bg-white bg-opacity-70 backdrop-blur-sm dark:bg-slate-900 dark:bg-opacity-50;
-            box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hide scroll-to-top button initially */
-        #to-top {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="./src/input.css">
+    
 </head>
 
 <body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">
@@ -53,27 +26,22 @@
       </a>
 
       <!-- Hamburger -->
-      <button
-        id="hamburger"
-        name="hamburger"
-        type="button"
-        class="block lg:hidden focus:outline-none"
-      >
-        <span
-          class="hamburger-line block w-6 h-[2px] bg-slate-800 dark:bg-white mb-1 transition"
-        ></span>
-        <span
-          class="hamburger-line block w-6 h-[2px] bg-slate-800 dark:bg-white mb-1 transition"
-        ></span>
-        <span
-          class="hamburger-line block w-6 h-[2px] bg-slate-800 dark:bg-white transition"
-        ></span>
-      </button>
+        <button
+            id="hamburger"
+            name="hamburger"
+            type="button"
+            class="block lg:hidden focus:outline-none"
+            >
+            <span class="hamburger-line block w-6 h-[2px] bg-slate-800 dark:bg-white mb-1 transition duration-300 ease-in-out origin-top-left"></span>
+            <span class="hamburger-line block w-6 h-[2px] bg-slate-800 dark:bg-white mb-1 transition duration-300 ease-in-out"></span>
+            <span class="hamburger-line block w-6 h-[2px] bg-slate-800 dark:bg-white transition duration-300 ease-in-out origin-bottom-left"></span>
+        </button>
+
 
       <!-- Nav Menu -->
       <nav
         id="nav-menu"
-        class="hidden absolute right-6 top-14 py-4 bg-white shadow-lg rounded-lg w-52 lg:w-auto lg:static lg:bg-transparent lg:shadow-none lg:rounded-none lg:flex"
+        class="hidden absolute right-6 top-14 py-4 bg-dark shadow-lg rounded-lg w-52 lg:w-auto lg:static lg:shadow-none lg:rounded-none lg:flex"
       >
         <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 text-center">
           <li><a href="#home" class="nav-link">Home</a></li>
@@ -89,11 +57,11 @@
 </header>
 
 <!-- Extra CSS class for nav links -->
-<style>
+<!-- <style>
   .nav-link {
-    @apply text-base font-medium text-slate-700 dark:text-slate-200 hover:text-purple-600 transition;
+    @apply text-base font-medium text-slate-700 dark:text-slate-800 hover:text-purple-600 transition;
   }
-</style>
+</styl> -->
 
     <!-- Header End -->
 
@@ -419,41 +387,6 @@
     <!-- Scroll to Top Button End -->
 
 
-    <!-- Embedded JavaScript -->
-    <script>
-        // Navbar Fixed & Scroll-to-Top Button
-        window.onscroll = function() {
-            const header = document.querySelector('header');
-            const toTop = document.querySelector('#to-top');
-            const fixedNav = header.offsetTop;
-
-            if (window.pageYOffset > fixedNav) {
-                header.classList.add('navbar-fixed');
-                toTop.style.display = 'flex';
-            } else {
-                header.classList.remove('navbar-fixed');
-                toTop.style.display = 'none';
-            }
-        };
-
-        // Hamburger Menu
-        const hamburger = document.querySelector('#hamburger');
-        const navMenu = document.querySelector('#nav-menu');
-
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('hamburger-active');
-            navMenu.classList.toggle('hidden');
-        });
-
-        // Close hamburger menu when clicking outside
-        window.addEventListener('click', function(e){
-            if(e.target != hamburger && e.target != navMenu){
-                hamburger.classList.remove('hamburger-active');
-                navMenu.classList.add('hidden');
-            }
-        });
-    </script>
-
+<script src="./js/script.js"></script>
 </body>
-
 </html>
