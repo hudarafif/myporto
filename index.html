@@ -223,34 +223,64 @@
     <!-- Portfolio Section End -->
     
     <!-- Clients Section Start -->
-    <section id="clients" class="pt-36 pb-32 bg-fixed bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('./dist/img/space.jpg');">
-            <div class="container mx-auto">
-                <div class="w-full px-4">
-                    <div class="mx-auto text-center mb-16">
-                        <h4 class="font-semibold text-purple-500 text-lg">Technologies & Tools</h4>
-                        <h2 class="font-bold text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">My Development Stack</h2>
-                        <p class="font-medium text-slate-400 md:text-lg">I have experience working with a range of modern web technologies to build robust and scalable applications.</p>
-                    </div>
-                </div>
-                <div class="w-full px-4">
-                    <div class="flex flex-wrap items-center justify-center gap-8">
-                        <!-- Tech Icons -->
-                        <div class="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
-                        <img src="./dist/img/clients/tailwind.svg" alt="Tailwind CSS" class="h-16">
-                        </div>
-                        <div class="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
-                        <img src="./dist/img/clients/javascript.svg" alt="Tailwind CSS" class="h-16">
-                        </div>
-                        <div class="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
-                        <img src="./dist/img/clients/html.svg" alt="Tailwind CSS" class="h-16">
-                        </div>
-                        <div class="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
-                        <img src="./dist/img/clients/nextjs.svg" alt="Tailwind CSS" class="h-16">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section
+  id="clients"
+  class="pt-36 pb-32 bg-fixed bg-cover bg-center"
+  style="background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('./dist/img/space.jpg');"
+>
+  <div class="container mx-auto">
+    <div class="w-full px-4">
+      <div class="mx-auto text-center mb-16">
+        <h4 class="font-semibold text-purple-500 text-lg">Technologies & Tools</h4>
+        <h2 class="font-bold text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">
+          My Development Stack
+        </h2>
+        <p class="font-medium text-slate-400 md:text-lg">
+          I have experience working with a range of modern web technologies to build robust and scalable applications.
+        </p>
+      </div>
+    </div>
+
+    <!-- Marquee Wrapper -->
+    <div class="w-full overflow-hidden relative">
+      <div class="flex animate-marquee gap-16">
+        <!-- Repeat icons to create seamless scroll -->
+        <div class="flex items-center gap-16">
+          <img src="./dist/img/clients/tailwind.svg" alt="Tailwind CSS" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+          <img src="./dist/img/clients/html.svg" alt="HTML" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+          <img src="./dist/img/clients/css3.svg" alt="HTML" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+          <img src="./dist/img/clients/javascript.svg" alt="JavaScript" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+          <img src="./dist/img/clients/nextjs.svg" alt="Next.js" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+        </div>
+        <!-- Duplicate for infinite loop -->
+        <div class="flex items-center gap-16">
+          <img src="./dist/img/clients/tailwind.svg" alt="Tailwind CSS" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+          <img src="./dist/img/clients/html.svg" alt="HTML" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+          <img src="./dist/img/clients/css3.svg" alt="HTML" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+          <img src="./dist/img/clients/javascript.svg" alt="JavaScript" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+          <img src="./dist/img/clients/nextjs.svg" alt="Next.js" class="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Custom animation -->
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 15s linear infinite;
+    width: max-content;
+  }
+</style>
+
     <!-- Clients Section End -->
 
     <!-- Blog Section Start -->
