@@ -53,6 +53,22 @@ form.addEventListener('submit', function(event) {
     });
 });
 
+
+  const marquee = document.querySelector("#logo-marquee > div");
+  let lastScrollX = 0;
+
+  window.addEventListener("wheel", (e) => {
+    if (e.deltaX > 0) {
+      // user scroll kanan
+      marquee.classList.remove("animate-marquee");
+      marquee.classList.add("animate-marquee-reverse");
+    } else if (e.deltaX < 0) {
+      // user scroll kiri
+      marquee.classList.remove("animate-marquee-reverse");
+      marquee.classList.add("animate-marquee");
+    }
+  }, { passive: true });
+
 // document.addEventListener('DOMContentLoaded', function() {
 //     const parallaxBg = document.querySelector('#clients');
     
