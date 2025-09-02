@@ -53,8 +53,7 @@ form.addEventListener('submit', function(event) {
     });
 });
 
-
-  const marquee = document.querySelector("#logo-marquee > div");
+const marquee = document.querySelector("#logo-marquee");
   let lastScrollX = 0;
 
   window.addEventListener("wheel", (e) => {
