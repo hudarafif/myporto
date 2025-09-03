@@ -307,14 +307,16 @@
       <div class="max-w-xl mx-auto text-center mb-16">
         <h4 class="font-semibold text-purple-600 text-lg">Blog</h4>
         <h2 class="font-bold text-slate-900 dark:text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Latest Articles</h2>
-        <p class="font-medium text-slate-500 md:text-lg">
-          I enjoy writing about technology and sharing my knowledge with the community.
-        </p>
+        <p class="font-medium text-slate-500 md:text-lg">I enjoy writing about technology and sharing my knowledge with the community.</p>
       </div>
     </div>
-    <div id="blog-container" class="flex flex-wrap justify-center gap-6"></div>
+    <!-- ini harus ada id="blog-articles" -->
+    <div class="flex flex-wrap justify-center" id="blog-articles">
+      <!-- Artikel dari API akan muncul di sini -->
+    </div>
   </div>
 </section>
+
 
     <!-- Blog Section End -->
 
@@ -417,6 +419,6 @@
     <!-- Scroll to Top Button End -->
 
 
+    <script src="./js/script.js"></script>
 </body>
-<script src="./js/script.js"></script>
 </html>
