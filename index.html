@@ -145,55 +145,95 @@
     <!-- About Section End -->
 
     <!-- Portfolio Section Start -->
-    <section id="portfolio" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800">
-        <div class="container mx-auto">
-            <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
-                    <h4 class="font-semibold text-purple-600 text-lg mb-2">Portfolio</h4>
-                    <h2 class="font-bold text-slate-900 dark:text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">My Recent Projects</h2>
-                    <p class="font-medium text-slate-500 md:text-lg">Here are some of the projects I've worked on, showcasing my skills in web development and problem-solving.</p>
-                </div>
-            </div>
-            <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto">
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden bg-white dark:bg-slate-700">
-                        <img src="./dist/img/portfolio/game.png" alt="Phaser 3 Game" class="w-full">
-                        <div class="p-6">
-                            <h3 class="font-semibold text-xl text-slate-900 dark:text-white mt-2 mb-3">Game with Phaser 3</h3>
-                            <p class="font-medium text-base text-slate-500 mb-4">An interactive web-based game built using the Phaser 3 framework, demonstrating JavaScript and game logic skills.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden bg-white dark:bg-slate-700">
-                        <img src="./dist/img/portfolio/rentalYuk.png" alt="Rental App" class="w-full">
-                        <div class="p-6">
-                           <h3 class="font-semibold text-xl text-slate-900 dark:text-white mt-2 mb-3">RentalYuk Application</h3>
-                           <p class="font-medium text-base text-slate-500 mb-4">A full-featured car rental web application with a user-friendly interface for browsing, and booking vehicles.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                     <div class="rounded-md shadow-md overflow-hidden bg-white dark:bg-slate-700">
-                        <img src="./dist/img/portfolio/weather-app.png" alt="Weather App" class="w-full">
-                        <div class="p-6">
-                            <h3 class="font-semibold text-xl text-slate-900 dark:text-white mt-2 mb-3">Weather Forecast App</h3>
-                            <p class="font-medium text-base text-slate-500 mb-4">A sleek weather application that fetches and displays real-time weather data from a third-party API.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden bg-white dark:bg-slate-700">
-                        <img src="./dist/img/portfolio/slicing.png" alt="Company Profile" class="w-full">
-                        <div class="p-6">
-                            <h3 class="font-semibold text-xl text-slate-900 dark:text-white mt-2 mb-3">Company Profile Slicing</h3>
-                            <p class="font-medium text-base text-slate-500 mb-4">A pixel-perfect implementation of a company profile design, focusing on responsive slicing with HTML and Tailwind CSS.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="portfolio" class="pt-24 pb-12 bg-slate-100 dark:bg-slate-800">
+  <div class="container mx-auto">
+    <!-- Header -->
+    <div class="w-full px-4">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <h4 class="font-semibold text-purple-600 text-base mb-2">Portfolio</h4>
+        <h2 class="font-bold text-slate-900 dark:text-white text-2xl mb-3 sm:text-3xl lg:text-4xl">
+          My Recent Projects
+        </h2>
+        <p class="font-medium text-slate-500 text-sm md:text-base">
+          Here are some of the projects I've worked on, showcasing my skills in web development and problem-solving.
+        </p>
+      </div>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:w-10/12 xl:mx-auto px-4">
+      
+      <!-- Project Card -->
+      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto transform transition duration-300 hover:scale-105 hover:shadow-xl">
+        <div class="overflow-hidden">
+          <img src="./dist/img/portfolio/game.png" alt="Phaser 3 Game" class="w-full h-40 object-cover transition duration-300 hover:scale-110">
         </div>
-    </section>
+        <div class="p-4">
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2">Game with Phaser 3</h3>
+          <p class="text-slate-500 text-sm">
+            An interactive web-based game built using the Phaser 3 framework.
+          </p>
+        </div>
+      </div>
+
+      <!-- Project Card -->
+      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto transform transition duration-300 hover:scale-105 hover:shadow-xl">
+        <div class="overflow-hidden">
+          <img src="./dist/img/portfolio/rentalYuk.png" alt="Rental App" class="w-full h-40 object-cover transition duration-300 hover:scale-110">
+        </div>
+        <div class="p-4">
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2">RentalYuk Application</h3>
+          <p class="text-slate-500 text-sm">
+            A full-featured car rental web application with booking system.
+          </p>
+        </div>
+      </div>
+
+      <!-- Project Card -->
+      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto transform transition duration-300 hover:scale-105 hover:shadow-xl">
+        <div class="overflow-hidden">
+          <img src="./dist/img/portfolio/weather-app.png" alt="Weather App" class="w-full h-40 object-cover transition duration-300 hover:scale-110">
+        </div>
+        <div class="p-4">
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2">Weather Forecast App</h3>
+          <p class="text-slate-500 text-sm">
+            A sleek weather application fetching real-time data from API.
+          </p>
+        </div>
+      </div>
+
+      <!-- Project Card -->
+      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto transform transition duration-300 hover:scale-105 hover:shadow-xl">
+        <div class="overflow-hidden">
+          <img src="./dist/img/portfolio/slicing.png" alt="Company Profile" class="w-full h-40 object-cover transition duration-300 hover:scale-110">
+        </div>
+        <div class="p-4">
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2">Company Profile Slicing</h3>
+          <p class="text-slate-500 text-sm">
+            Pixel-perfect responsive slicing with HTML & Tailwind CSS.
+          </p>
+        </div>
+      </div>
+
+      <!-- Project Card -->
+      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto transform transition duration-300 hover:scale-105 hover:shadow-xl">
+        <div class="overflow-hidden">
+          <img src="./dist/img/portfolio/cropprediction.png" alt="Crop Prediction" class="w-full h-40 object-cover transition duration-300 hover:scale-110">
+        </div>
+        <div class="p-4">
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2">Crop Prediction</h3>
+          <p class="text-slate-500 text-sm">
+            A machine learning app that predicts the most suitable crop.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
     <!-- Portfolio Section End -->
     
     <!-- Clients Section Start -->
@@ -261,49 +301,21 @@
     <!-- Clients Section End -->
 
     <!-- Blog Section Start -->
-    <section id="blog" class="pt-36 pb-32 bg-slate-100 dark:bg-slate-800">
-        <div class="container mx-auto">
-            <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
-                    <h4 class="font-semibold text-purple-600 text-lg">Blog</h4>
-                    <h2 class="font-bold text-slate-900 dark:text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Latest Articles</h2>
-                    <p class="font-medium text-slate-500 md:text-lg">I enjoy writing about technology and sharing my knowledge with the community.</p>
-                </div>
-            </div>
-            <div class="flex flex-wrap justify-center">
-                <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-                    <div class="bg-white dark:bg-slate-700 rounded-xl overflow-hidden shadow-lg mb-10">
-                        <img src="https://source.unsplash.com/360x200?programming" alt="Programming Tips" class="w-full">
-                        <div class="py-8 px-6">
-                            <h3><a href="#" class="block mb-3 font-semibold text-slate-900 dark:text-white text-xl hover:text-purple-600 truncate">Effective Tips for Learning to Code</a></h3>
-                            <p class="font-medium text-base text-slate-500 mb-6">Discover proven strategies and tips to accelerate your journey in becoming a proficient programmer.</p>
-                            <a href="#" class="font-medium text-sm text-white bg-purple-600 py-2 px-4 rounded-lg hover:opacity-80">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-                    <div class="bg-white dark:bg-slate-700 rounded-xl overflow-hidden shadow-lg mb-10">
-                        <img src="https://source.unsplash.com/360x200?web-design" alt="Web Design" class="w-full">
-                         <div class="py-8 px-6">
-                            <h3><a href="#" class="block mb-3 font-semibold text-slate-900 dark:text-white text-xl hover:text-purple-600 truncate">The Art of Modern Web Design</a></h3>
-                            <p class="font-medium text-base text-slate-500 mb-6">Exploring the latest trends and principles in web design that create engaging and user-friendly experiences.</p>
-                            <a href="#" class="font-medium text-sm text-white bg-purple-600 py-2 px-4 rounded-lg hover:opacity-80">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-                    <div class="bg-white dark:bg-slate-700 rounded-xl overflow-hidden shadow-lg mb-10">
-                        <img src="https://source.unsplash.com/360x200?technology" alt="Future of Tech" class="w-full">
-                        <div class="py-8 px-6">
-                            <h3><a href="#" class="block mb-3 font-semibold text-slate-900 dark:text-white text-xl hover:text-purple-600 truncate">Navigating the Future of Technology</a></h3>
-                            <p class="font-medium text-base text-slate-500 mb-6">A look into emerging technologies like AI, blockchain, and what they mean for developers and society.</p>
-                            <a href="#" class="font-medium text-sm text-white bg-purple-600 py-2 px-4 rounded-lg hover:opacity-80">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   <section id="blog" class="pt-36 pb-32 bg-slate-100 dark:bg-slate-800">
+  <div class="container mx-auto">
+    <div class="w-full px-4">
+      <div class="max-w-xl mx-auto text-center mb-16">
+        <h4 class="font-semibold text-purple-600 text-lg">Blog</h4>
+        <h2 class="font-bold text-slate-900 dark:text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Latest Articles</h2>
+        <p class="font-medium text-slate-500 md:text-lg">
+          I enjoy writing about technology and sharing my knowledge with the community.
+        </p>
+      </div>
+    </div>
+    <div id="blog-container" class="flex flex-wrap justify-center gap-6"></div>
+  </div>
+</section>
+
     <!-- Blog Section End -->
 
     <!-- Contact Section Start -->
@@ -405,6 +417,6 @@
     <!-- Scroll to Top Button End -->
 
 
-<script src="./js/script.js"></script>
 </body>
+<script src="./js/script.js"></script>
 </html>

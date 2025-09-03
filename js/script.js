@@ -76,3 +76,46 @@ const marquee = document.querySelector("#logo-marquee");
 //         parallaxBg.style.transform = `translate3d(0, ${-scrollY * 0.5}px, 0)`;
 //     });
 // });
+
+async function loadArticles() {
+  try {
+    // ganti "javascript" dengan topik/tag lain (misalnya: webdev, ai, python, dll)
+    const res = await fetch("https://dev.to/api/articles?tag=javascript");
+    const articles = await res.json();
+
+    const blogContainer = document.getElementById("blog-articles");
+    blogContainer.innerHTML = "";
+
+    articles.slice(0, 6).forEach(article => { // ambil 6 artikel terbaru
+      blogContainer.innerHTML += `
+        <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
+          <div class="bg-white dark:bg-slate-700 rounded-xl overflow-hidden shadow-lg mb-10">
+            <img src="${article.social_image}" alt="${article.title}" class="w-full">
+            <div class="py-8 px-6">
+              <h3>
+                <a href="${article.url}" target="_blank" 
+                   class="block mb-3 font-semibold text-slate-900 dark:text-white text-xl hover:text-purple-600 truncate">
+                   ${article.title}
+                </a>
+              </h3>
+              <p class="font-medium text-base text-slate-500 mb-6">${article.description || "No description available."}</p>
+              <a href="${article.url}" target="_blank" 
+                 class="font-medium text-sm text-white bg-purple-600 py-2 px-4 rounded-lg hover:opacity-80">
+                 Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  } catch (err) {
+    console.error("Gagal ambil artikel:", err);
+  }
+}
+
+// load pertama
+loadArticles();
+
+// auto refresh tiap 5 menit
+setInterval(loadArticles, 300000);
+
