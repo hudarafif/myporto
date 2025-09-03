@@ -77,11 +77,12 @@ const marquee = document.querySelector("#logo-marquee");
 //     });
 // });
 
+const refreshBtn = document.getElementById("refresh-btn");
+
 async function loadArticles() {
   try {
     const res = await fetch("https://dev.to/api/articles?tag=javascript");
     const articles = await res.json();
-    console.log("✅ Articles fetched:", articles); // cek di console
 
     const blogContainer = document.getElementById("blog-articles");
     blogContainer.innerHTML = "";
@@ -115,5 +116,23 @@ async function loadArticles() {
   }
 }
 
+// Load pertama
 loadArticles();
+
+// Timer: setelah 5 menit, munculin tombol refresh
+setTimeout(() => {
+  refreshBtn.classList.remove("hidden");
+}, 60000); // 300000 ms = 5 menit
+
+// Klik tombol refresh → reload artikel & sembunyiin lagi tombolnya
+refreshBtn.addEventListener("click", () => {
+  loadArticles();
+  refreshBtn.classList.add("hidden");
+
+  // Timer lagi setelah 5 menit
+  setTimeout(() => {
+    refreshBtn.classList.remove("hidden");
+  }, 60000);
+});
+
 
