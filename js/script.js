@@ -156,7 +156,7 @@ let spin = gsap.to(".img", {
   scrollTrigger: {
     trigger: "#about",
     start: "top center",
-    end: "+=500",
+    end: "+=900",
     scrub: 1,
     markers: false,
   },
