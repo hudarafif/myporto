@@ -8,19 +8,21 @@
     <!-- Tailwind CSS CDN for instant use -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./src/input.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script type="text/javascript">
-  (function(){
-      emailjs.init("FCoO3N2Lo4DT2ioPD"); 
-  })();
-</script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init("FCoO3N2Lo4DT2ioPD"); 
+      })();
+      </script>
+
 
 </head>
-
-<body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">
-
+<body class=" bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">
     <!-- Header Start -->
-    <header class="fixed top-0 left-0 w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-md shadow-sm z-50">
+  <header class="fixed top-0 left-0 w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-md shadow-sm z-50">
   <div class="container mx-auto px-6 lg:px-12">
     <div class="flex items-center justify-between">
       <!-- Logo -->
@@ -53,7 +55,7 @@
           <li><a href="#home" class="nav-link">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="#clients" class="nav-link">Clients</a></li>
+          <li><a href="#Stack" class="nav-link">Stack</a></li>
           <li><a href="#blog" class="nav-link">Blog</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -68,48 +70,37 @@
     @apply text-base font-medium text-slate-700 dark:text-slate-800 hover:text-purple-600 transition;
   }
 </styl> -->
-
     <!-- Header End -->
 
     <!-- Hero Section Start -->
 <section id="home" class="pt-36 pb-16">
-    <div class="container mx-auto px-6 lg:px-16">
-        <div class="flex flex-wrap">
-            <div class="w-full self-center px-4 lg:w-1/2">
-                <h1 class="text-base font-semibold text-purple-600 md:text-xl">
-                Hello There, I'm
-                <span
-                    class="block font-bold text-slate-900 dark:text-white text-4xl mt-1 lg:text-5xl"
-                    >Rafif Huda Aditya</span
-                >
-                </h1>
-                <h2 class="font-medium text-slate-500 text-lg mb-5 lg:text-2xl">
-                Informatics Engineering Student
-                </h2>
-                <p
-                class="font-medium text-slate-400 mb-10 leading-relaxed"
-                >
-                Passionate about crafting elegant and functional web solutions. Let's
-                build something amazing together!
-                </p>
-                <a
-                href="#contact"
-                class="text-base font-semibold text-white bg-purple-600 py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
-                >Contact Me</a
-                >
-            </div>
-            <div class="w-full self-center px-4 lg:w-1/2">
-                <!-- UPDATED IMAGE SECTION -->
-                <div class="relative mt-10 lg:mt-0 flex justify-center">
-                <img
-                    src="./dist/img/myfoto.jpg"
-                    alt="Rafif Huda"
-                    class="w-80 h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-xl border-8 border-purple-500"
-                />
-                </div>
-            </div>
+  <div class="container mx-auto px-6 lg:px-16 opacity-0 translate-y-10 transition-all duration-1000 ease-out" id="hero-container">
+    <div class="flex flex-wrap">
+      <div class=" w-full self-center px-4 lg:w-1/2">
+        <h1 class="text-base font-semibold text-purple-600 md:text-xl">
+          Hello There, I'm
+          <span
+            class="block font-bold text-slate-900 dark:text-white text-4xl mt-1 lg:text-5xl"
+          >Rafif Huda Aditya</span>
+        </h1>
+        <h2 class="font-medium text-slate-500 text-lg mb-5 lg:text-2xl">
+          Informatics Engineering
+        </h2>
+        <p class="hero-paragraph font-medium text-slate-400 mb-10 leading-relaxed">
+          Passionate about crafting elegant and functional web solutions. Let's build something amazing together!
+        </p>
+        <a href="#contact" class="text-base font-semibold text-white bg-purple-600 py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
+          Contact Me
+        </a>
+      </div>
+      <div class="w-full self-center px-4 lg:w-1/2">
+        <div class="relative mt-10 lg:mt-0 flex justify-center">
+          <img src="./dist/img/myfoto.jpg" alt="Rafif Huda"
+            class="w-80 h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-xl border-8 border-purple-500">
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
     <!-- Hero Section End -->
@@ -120,22 +111,22 @@
             <div class="flex flex-wrap">
                 <div class="w-full px-4 mb-10 lg:w-1/2">
                     <h4 class="font-bold uppercase text-purple-600 text-lg mb-3">About Me</h4>
-                    <h2 class="font-bold text-slate-900 dark:text-white text-3xl mb-5 max-w-md lg:text-4xl">A Glimpse Into My Journey</h2>
-                    <p class="font-medium text-base text-slate-500 max-w-xl">I am a dedicated Informatics Engineering student with a strong passion for web development and technology. I thrive on challenges and continuously seek opportunities to learn and grow in this ever-evolving digital landscape.</p>
+                    <h2 class=" font-bold text-slate-900 dark:text-white text-3xl mb-5 max-w-md lg:text-4xl">A Glimpse Into My Journey</h2>
+                    <p class=" font-medium text-base text-slate-500 max-w-xl">I am a dedicated Informatics Engineering student with a strong passion for web development and technology. I thrive on challenges and continuously seek opportunities to learn and grow in this ever-evolving digital landscape.</p>
                 </div>
                 <div class="w-full px-3 lg:w-1/2">
                     <h3 class="font-semibold text-2xl text-slate-900 dark:text-white mb-4 lg:text-3xl lg:pt-10">Let's Connect</h3>
                     <p class="font-medium text-slate-500 text-base mb-6 lg:text-lg">I'm always open to collaborating on interesting projects or discussing new ideas. Feel free to reach out through my social media channels.</p>
-                    <div class="flex items-center">
+                    <div class=" flex items-center">
                         <!-- Social Media Icons -->
                         <a href="https://www.instagram.com/______________brohud_/" target="_blank" class="w-9 h-9 mr-3 rounded-md flex justify-center items-center border border-slate-400 text-slate-400 hover:border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300">
-                           <img src="./dist/img/clients/instagram.svg" alt="github" class="fill-current">
+                           <img src="./dist/img/clients/instagram.svg" alt="github" class="img fill-current">
                         </a>
                         <a href="www.linkedin.com/in/rafif-huda-aditya-6084b42a5" target="_blank" class="w-9 h-9 mr-3 flex justify-center items-center border border-slate-400 text-slate-400 hover:border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300">
-                           <img src="./dist/img/clients/linkedin.svg" alt="github" class="fill-current">
+                           <img src="./dist/img/clients/linkedin.svg" alt="github" class="img fill-current">
                         </a>
                         <a href="https://github.com/hudarafif" target="_blank" class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-400 text-slate-400 hover:border-purple-600 hover:bg-purple-600 hover:text-white transition duration-300">
-                           <img src="./dist/img/clients/github.svg" alt="github" class="fill-current">
+                           <img src="./dist/img/clients/github.svg" alt="github" class="img fill-current">
                         </a>
                     </div>
                 </div>
@@ -145,102 +136,93 @@
     <!-- About Section End -->
 
     <!-- Portfolio Section Start -->
-  <section id="portfolio" class="pt-24 pb-12 bg-slate-100 dark:bg-slate-800">
-  <div class="container mx-auto">
-    <!-- Header -->
-    <div class="w-full px-4">
-      <div class="max-w-2xl mx-auto text-center mb-12">
-        <h4 class="font-semibold text-purple-600 text-base mb-2">Portfolio</h4>
-        <h2 class="font-bold text-slate-900 dark:text-white text-2xl mb-3 sm:text-3xl lg:text-4xl">
-          My Latest Projects
-        </h2>
-        <p class="font-medium text-slate-500 text-sm md:text-base">
-          Here are some of the projects I've worked on, showcasing my skills in web development and problem-solving.
-        </p>
-      </div>
+<section id="portfolio" class="scroll-animate pt-24 pb-12 bg-slate-100 dark:bg-slate-800"> 
+  <div class="container mx-auto"> 
+    <!-- Header --> 
+     <div class="w-full px-4"> 
+      <div class="max-w-2xl mx-auto text-center mb-12"> 
+        <h4 class="font-semibold text-purple-600 text-base mb-2">Portfolio</h4> 
+        <h2 class="font-bold text-slate-900 dark:text-white text-2xl mb-3 sm:text-3xl lg:text-4xl"> My Latest Projects </h2> 
+        <p class="font-medium text-slate-500 text-sm md:text-base"> Here are some of the projects I've worked on, showcasing my skills in web development and problem-solving. </p> 
+      </div> 
+    </div> 
+    <!-- Portfolio Grid --> 
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:w-10/12 xl:mx-auto px-4"> 
+      <!-- Project Card --> 
+       <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl"> 
+         <div class="overflow-hidden"> 
+          <img src="./dist/img/portfolio/game.png" alt="Phaser 3 Game" class="w-full h-100% object-cover transition duration-300 hover:scale-110"> 
+        </div> 
+        <div class="p-4 flex flex-col flex-1"> 
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Simple Game with Phaser 3</h3> 
+          <p class="text-slate-500 text-sm line-clamp-3">An interactive web-based game built using the Phaser 3 framework.</p> 
+        </div> 
+      </div> 
+      <!-- Project Card --> 
+       <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl"> 
+        <div class="overflow-hidden"> <img src="./dist/img/portfolio/rentalYuk.png" alt="Rental App" class="w-full h-100% object-cover transition duration-300 hover:scale-110"> 
+        </div> 
+        <div class="p-4 flex flex-col flex-1"> 
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">RentalYuk Application</h3> 
+          <p class="text-slate-500 text-sm line-clamp-3">A full-featured car rental web application with booking system.</p> 
+        </div> 
+      </div> 
+      <!-- Project Card --> 
+       <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl"> 
+         <div class="overflow-hidden"> 
+          <img src="./dist/img/portfolio/weather-app.png" alt="Weather App" class="w-full h-100% object-cover transition duration-300 hover:scale-110"> 
+        </div> <div class="p-4 flex flex-col flex-1"> 
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Weather Forecast App</h3> 
+          <p class="text-slate-500 text-sm line-clamp-3">A sleek weather application fetching real-time data from API.</p> 
+        </div> 
+      </div> 
+      <!-- Project Card --> 
+       <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl"> 
+        <div class="overflow-hidden"> 
+          <img src="./dist/img/portfolio/slicing.png" alt="Company Profile" class="w-full h-100% object-cover transition duration-300 hover:scale-110"> 
+        </div> 
+        <div class="p-4 flex flex-col flex-1"> 
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Company Profile Slicing</h3> 
+          <p class="text-slate-500 text-sm line-clamp-3">Pixel-perfect responsive slicing using Figma.</p> 
+        </div> 
+      </div> 
+      <!-- Project Card --> 
+       <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl"> 
+        <div class="overflow-hidden"> 
+          <img src="./dist/img/portfolio/cropprediction.png" alt="Crop Prediction" class="w-full h-100% object-cover transition duration-300 hover:scale-110"> 
+        </div> 
+        <div class="p-4 flex flex-col flex-1"> 
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Crop Prediction</h3> 
+          <p class="text-slate-500 text-sm line-clamp-3">A machine learning app that predicts the most suitable crop.</p> 
+        </div> 
+      </div> 
+      <!-- Project Card --> 
+       <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl"> 
+        <div class="overflow-hidden"> 
+          <img src="./dist/img/portfolio/sigGarden.png" alt="sigGarden" class="w-full h-100% object-cover transition duration-300 hover:scale-110"> 
+        </div> <div class="p-4 flex flex-col flex-1"> 
+          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">sigGarden</h3> 
+          <p class="text-slate-500 text-sm line-clamp-3">A responsive web application for gardening enthusiasts.</p> 
+        </div> 
+      </div> 
+    </div> 
+  </div> 
+  <div class="w-full flex justify-center mt-6 mb-10 gap-x-4">
+      <button id="prevBtn" class="bg-purple-600 text-white py-2 px-5 rounded-md shadow-md hover:bg-purple-700 transition">
+          Previous
+      </button>
+      <button id="nextBtn" class="bg-purple-600 text-white py-2 px-5 rounded-md shadow-md hover:bg-purple-700 transition">
+          Next
+      </button>
     </div>
-
-    <!-- Portfolio Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:w-10/12 xl:mx-auto px-4">
-      
-      <!-- Project Card -->
-      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
-        <div class="overflow-hidden">
-          <img src="./dist/img/portfolio/game.png" alt="Phaser 3 Game" class="w-full h-100% object-cover transition duration-300 hover:scale-110">
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Simple Game with Phaser 3</h3>
-          <p class="text-slate-500 text-sm line-clamp-3">An interactive web-based game built using the Phaser 3 framework.</p>
-        </div>
-      </div>
-
-      <!-- Project Card -->
-      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
-        <div class="overflow-hidden">
-          <img src="./dist/img/portfolio/rentalYuk.png" alt="Rental App" class="w-full h-100% object-cover transition duration-300 hover:scale-110">
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">RentalYuk Application</h3>
-          <p class="text-slate-500 text-sm line-clamp-3">A full-featured car rental web application with booking system.</p>
-        </div>
-      </div>
-
-      <!-- Project Card -->
-      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
-        <div class="overflow-hidden">
-          <img src="./dist/img/portfolio/weather-app.png" alt="Weather App" class="w-full h-100% object-cover transition duration-300 hover:scale-110">
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Weather Forecast App</h3>
-          <p class="text-slate-500 text-sm line-clamp-3">A sleek weather application fetching real-time data from API.</p>
-        </div>
-      </div>
-
-      <!-- Project Card -->
-      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
-        <div class="overflow-hidden">
-          <img src="./dist/img/portfolio/slicing.png" alt="Company Profile" class="w-full h-100% object-cover transition duration-300 hover:scale-110">
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Company Profile Slicing</h3>
-          <p class="text-slate-500 text-sm line-clamp-3">Pixel-perfect responsive slicing using Figma.</p>
-        </div>
-      </div>
-
-      <!-- Project Card -->
-      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
-        <div class="overflow-hidden">
-          <img src="./dist/img/portfolio/cropprediction.png" alt="Crop Prediction" class="w-full h-100% object-cover transition duration-300 hover:scale-110">
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Crop Prediction</h3>
-          <p class="text-slate-500 text-sm line-clamp-3">A machine learning app that predicts the most suitable crop.</p>
-        </div>
-      </div>
-
-      <!-- Project Card -->
-      <div class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
-        <div class="overflow-hidden">
-          <img src="./dist/img/portfolio/sigGarden.png" alt="sigGarden" class="w-full h-100% object-cover transition duration-300 hover:scale-110">
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">sigGarden</h3>
-          <p class="text-slate-500 text-sm line-clamp-3">A responsive web application for gardening enthusiasts.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </section>
-
-
 
 
     <!-- Portfolio Section End -->
     
-    <!-- Clients Section Start -->
-    <section
-  id="clients"
+    <!-- Technologies Section Start -->
+<section
+  id="Stack"
   class="pt-36 pb-32 bg-fixed bg-cover bg-center"
   style="background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('./dist/img/space.jpg');"
 >
@@ -258,10 +240,10 @@
     </div>
 
     <!-- Marquee Wrapper -->
-    <div id="logo-marquee" class="w-full overflow-hidden">
-        <div class="flex animate-marquee gap-16 w-[20%]">
+    <div id="logo-marquee" class="w-full overflow-hidden ">
+        <div class="flex animate-marquee gap-20 w-[20%] px-50">
             <!-- Repeat icons to create seamless scroll -->
-            <div class="flex items-center gap-16">
+            <div class="flex items-center gap-20">
                 <img src="./dist/img/clients/tailwind.svg" alt="Tailwind CSS" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
                 <img src="./dist/img/clients/html.svg" alt="HTML" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
                 <img src="./dist/img/clients/css3.svg" alt="CSS" class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
@@ -269,8 +251,9 @@
                 <img src="./dist/img/clients/nextjs.svg" alt="Next.js" class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
                 <img src="./dist/img/clients/python.svg" alt="python" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
                 <img src="./dist/img/clients/bootstrap.svg" alt="bootstrap" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            </div>
-            <div class="flex items-center gap-16">
+                <img src="./dist/img/clients/figma.svg" alt="figma" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+              </div>
+              <div class="flex items-center gap-20">
                 <img src="./dist/img/clients/tailwind.svg" alt="Tailwind CSS" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
                 <img src="./dist/img/clients/html.svg" alt="HTML" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
                 <img src="./dist/img/clients/css3.svg" alt="CSS" class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
@@ -278,7 +261,9 @@
                 <img src="./dist/img/clients/nextjs.svg" alt="Next.js" class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
                 <img src="./dist/img/clients/python.svg" alt="python" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
                 <img src="./dist/img/clients/bootstrap.svg" alt="bootstrap" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            </div>
+                <img src="./dist/img/clients/figma.svg" alt="figma" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+                <img src="./dist/img/clients/tailwind.svg" alt="Tailwind CSS" class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
+              </div>
         </div>
     </div>
   </div>
@@ -287,20 +272,19 @@
 <!-- Custom animation -->
 <style>
   @keyframes marquee {
-    0% {
+    0%{
       transform: translateX(0%);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-48%);
     }
   }
   .animate-marquee {
-    animation: marquee 10s linear infinite;
+    animation: marquee 22s cubic-bezier(0.15, 0.2, 0.3, 0.9) infinite;
     width: max-content;
   }
 </style>
-
-    <!-- Clients Section End -->
+    <!-- Technologies Section End -->
 
     <!-- Blog Section Start -->
    <section id="blog" class="pt-36 pb-32 bg-slate-100 dark:bg-slate-800">
@@ -328,19 +312,19 @@
 
 
 
-    <!-- Blog Section End -->
+<!-- Blog Section End -->
 
-    <!-- Contact Section Start -->
-    <section id="contact" class="pt-36 pb-32">
-        <div class="container mx-auto">
-            <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
-                    <h4 class="font-semibold text-purple-600 text-lg">Contact</h4>
-                    <h2 class="font-bold text-slate-900 dark:text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Get in Touch</h2>
-                    <p class="font-medium text-slate-500 md:text-lg">Have a question or a project in mind? I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.</p>
-                </div>
-                <form id="contact-form" class="w-full max-w-2xl mx-auto">
-                    <div class="w-full px-4 mb-8">
+<!-- Contact Section Start -->
+<section id="contact" class="pt-36 pb-32">
+  <div class="container mx-auto">
+    <div class="w-full px-4">
+      <div class="max-w-xl mx-auto text-center mb-16">
+        <h4 class="font-semibold text-purple-600 text-lg">Contact</h4>
+        <h2 class="font-bold text-slate-900 dark:text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Get in Touch</h2>
+        <p class="font-medium text-slate-500 md:text-lg">Have a question or a project in mind? I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.</p>
+      </div>
+      <form id="contact-form" class="w-full max-w-2xl mx-auto">
+        <div class="w-full px-4 mb-8">
                         <label for="name" class="text-base font-bold text-purple-600">Name</label>
                         <input type="text" id="name" name="user_name" required
                             class="w-full bg-slate-200 text-slate-800 p-3 rounded-md focus:outline-none focus:ring-purple-500 focus:ring-1 focus:border-purple-500" 
@@ -374,10 +358,10 @@
     <footer class="bg-slate-800 dark:bg-slate-900 pt-24 pb-12">
         <div class="container mx-auto">
             <div class="flex flex-wrap">
-                <div class="w-full px-4 mb-12 text-slate-300 font-medium md:w-1/3">
-                    <h2 class="font-bold text-2xl text-white mb-5">Rafif Huda Aditya</h2>
-                    <h3 class="font-bold text-xl mb-2">Contact Me</h3>
-                    <p>Semarang, Central Java</p>
+              <div class="w-full px-4 mb-12 text-slate-300 font-medium md:w-1/3">
+                <h2 class="font-bold text-2xl text-white mb-5">Rafif Huda Aditya</h2>
+                <h3 class="font-bold text-xl mb-2">Contact Me</h3>
+                <p>Semarang, Central Java</p>
                     <p>Indonesia</p>
                 </div>
                 <div class="w-full px-4 mb-12 md:w-1/3">
@@ -426,8 +410,12 @@
       <span class="mt-2 block h-5 w-5 rotate-45 border-t-2 border-l-2"></span>
     </a>
     <!-- Scroll to Top Button End -->
-
-
+    
+    <script src="/js/gsap.min.js"></script>
     <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>

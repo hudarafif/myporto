@@ -1,3 +1,4 @@
+
 const hamburger = document.querySelector('#hamburger');
 const navMenu = document.querySelector('#nav-menu');
 
@@ -133,6 +134,35 @@ refreshBtn.addEventListener("click", () => {
   setTimeout(() => {
     refreshBtn.classList.remove("hidden");
   }, 60000);
+});
+
+  // Hero animasi pas load
+  window.addEventListener("load", () => {
+    const hero = document.getElementById("hero-container");
+    hero.classList.remove("opacity-0", "translate-y-60");
+    hero.classList.add("opacity-100", "translate-y-0");
+  });
+
+ document.addEventListener("DOMContentLoaded", (event) => {
+  gsap.registerPlugin(SplitText), 
+  gsap.registerPlugin(ScrollTrigger);
+let split = SplitText.create(".hero-paragraph", { type: "chars, words, lines" });
+  gsap.from(split.chars, {
+  y: 100,
+  autoAlpha: 0,
+  stagger: 0.05
+  });
+let spin = gsap.to(".img", {
+  scrollTrigger: {
+    trigger: "#about",
+    start: "top center",
+    end: "+=500",
+    scrub: 1,
+    markers: false,
+  },
+  rotation: 360, 
+  ease: "none",
+});
 });
 
 
