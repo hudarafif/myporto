@@ -158,7 +158,7 @@ let spin = gsap.to(".img", {
     start: "top center",
     end: "+=600",
     scrub: 1,
-    markers: true,
+    markers: false,
   },
   rotation: 360, 
   ease: "none",
