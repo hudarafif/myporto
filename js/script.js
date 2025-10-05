@@ -20,10 +20,10 @@ window.onscroll = function(){
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const scrollToTop = document.getElementById('scrollToTop');
+    const scrollToTop = document.getElementById('to-top');
 
     window.addEventListener('scroll', function() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
             scrollToTop.style.display = 'block';
         } else {
             scrollToTop.style.display = 'none';
@@ -54,29 +54,7 @@ form.addEventListener('submit', function(event) {
     });
 });
 
-const marquee = document.querySelector("#logo-marquee");
-  let lastScrollX = 0;
 
-  window.addEventListener("wheel", (e) => {
-    if (e.deltaX > 0) {
-      // user scroll kanan
-      marquee.classList.remove("animate-marquee");
-      marquee.classList.add("animate-marquee-reverse");
-    } else if (e.deltaX < 0) {
-      // user scroll kiri
-      marquee.classList.remove("animate-marquee-reverse");
-      marquee.classList.add("animate-marquee");
-    }
-  }, { passive: true });
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     const parallaxBg = document.querySelector('#clients');
-    
-//     window.addEventListener('scroll', function() {
-//         const scrollY = window.scrollY;
-//         parallaxBg.style.transform = `translate3d(0, ${-scrollY * 0.5}px, 0)`;
-//     });
-// });
 
 const refreshBtn = document.getElementById("refresh-btn");
 
@@ -165,4 +143,27 @@ let spin = gsap.to(".img", {
 });
 });
 
+gsap.from("#home h1", { y: 60, opacity: 0, duration: 1, ease: "power3.out" });
+gsap.from("#home p", { y: 40, opacity: 0, delay: 0.3, duration: 1, ease: "power2.out" });
+// gsap.from("#home a", { y: 30, opacity: 0, delay: 0.6, duration: 1, ease: "power2.out" });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const texts = gsap.utils.toArray("#text-rotate span");
+    let tl = gsap.timeline({ repeat: -1 });
+
+    texts.forEach((text, i) => {
+      tl.to(text, {
+        duration: 0.8,
+        y: "0%",
+        opacity: 1,
+        ease: "power3.out"
+      })
+      .to(text, {
+        duration: 0.8,
+        y: "-100%",
+        opacity: 0,
+        ease: "power3.in",
+        delay: 1.5
+      }, "+=0.2");
+    });
+  });

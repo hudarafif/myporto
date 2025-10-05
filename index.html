@@ -20,9 +20,6 @@
 </head>
 
 <body class=" dark:bg-slate-950 text-slate-800 dark:text-slate-200">
-  <div class="fixed top-0 left-0 w-[500px] h-[500px] bg-fuchsia-600 rounded-full blur-3xl opacity-15 -z-10 "></div>
-  <div class="fixed bottom-1/4 right-1/2 w-[900px] h-[500px] bg-purple-600 rounded-full blur-3xl opacity-30 -z-10  ">
-  </div>
   <div
     class="fixed top-1/4 left-1/2 w-[600px] h-[600px] bg-blue-500 rounded-full blur-3xl opacity-20 -z-10  animation-delay-9000">
   </div>
@@ -61,47 +58,59 @@
       </div>
     </div>
   </header>
-
-  <!-- Extra CSS class for nav links -->
-  <!-- <style>
-  .nav-link {
-    @apply text-base font-medium text-slate-700 dark:text-slate-800 hover:text-purple-600 transition;
-  }
-</styl> -->
   <!-- Header End -->
 
   <!-- Hero Section Start -->
-  <section id="home" class="pt-36 pb-[9rem] overflow-hidden">
+  <section id="home" class="h-screen flex items-center justify-center bg-black text-gray-100 relative overflow-hidden">
+  <!-- Background Glow -->
+  <!-- <div class="absolute -top-20 -left-40 w-[500px] h-[500px] bg-purple-700 rounded-full blur-[150px] opacity-40"></div>
+  <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[180px] opacity-30"></div> -->
 
-    <div class="container mx-auto px-6 lg:px-16 opacity-20 translate-y-10 transition-all duration-1000 ease-out"
-      id="hero-container">
-      <div class="flex flex-wrap">
-        <div class=" w-full self-center px-4 lg:w-1/2">
-          <h1 class="text-base font-semibold text-purple-600 md:text-xl">
-            Hello There, I'm
-            <span class="block font-bold text-slate-900 dark:text-white text-4xl mt-1 lg:text-5xl">Rafif Huda
-              Aditya</span>
-          </h1>
-          <h2 class="font-medium text-slate-400 text-lg mb-5 lg:text-2xl">
-            Informatics Engineering
-          </h2>
-          <p class="hero-paragraph font-medium text-slate-400 mb-10 leading-relaxed">
-            Passionate about crafting elegant and functional web solutions. Let's build something amazing together!
-          </p>
-          <a href="#contact"
-            class="text-base font-semibold text-white bg-purple-600 py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
-            Contact Me
-          </a>
-        </div>
-        <div class="w-full self-center px-4 lg:w-1/2">
-          <div class="relative mt-10 lg:mt-0 flex justify-center">
-            <img src="./dist/img/myfoto.jpg" alt="Rafif Huda"
-              class="w-80 h-50 lg:w-66 lg:h-46 rounded-full object-cover transform scale-250 shadow-xl border-x-4 border-slate-200">
-          </div>
-        </div>
+  <!-- Hero Content -->
+  <div class="z-10 text-center md:text-center px-10 md:px-20">
+    <div class="relative h-[40px] overflow-hidden text-center md:text-left">
+      <div id="text-rotate" class="text-6xl md:text-xl font-space font-bold tracking-tight">
+        <span class="font-space block">Welcome to</span>
+        <span class="font-space block">Selamat Datang</span>
+        <span class="block">いらっしゃいませ</span>
+        <span class="block">Sugeng Rawuh</span>
       </div>
     </div>
-  </section>
+
+    <p 
+    class="font-porto text-lg md:text-8xl text-slate-200 max-w-xl mx-auto md:mx-0 mb-5">
+      my PORTFOLIO
+    </p>
+    <p class="text-lg md:text-lg text-slate-300 max-w-xl mx-auto md:mx-0 mb-10">
+      Lets build something amazing together.
+    </p>
+    <button class="glass-btn">
+      <a href="#portfolio">View My Work</a>
+    </button>
+    <svg style="position: absolute; width: 0; height: 0;">
+      <filter id="glass"
+        x="-50%" y="-50%" width="200%" height="200%">
+        <feImage x="-50%" y="-50%" width="200%" height="200%" result="map"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="0.02" result="blur"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" result="map"/>
+        <feDisplacementMap id="displacementMap" in="blur" scale="2" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+      </filter>
+    </svg>
+    <!-- <a href="#portfolio"
+      class="btn-viewmywork relative inline-block px-8 py-3 rounded-full font-semibold tracking-wide text-white backdrop-blur-md border border-white/20 overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] group">
+      <span class="relative z-10">View My Work</span>
+      <span
+        class="absolute inset-0 bg-gradient-to-r from-white/20 via-purple-400/20 to-white/20 opacity-0 group-hover:opacity-100 blur-lg animate-glow"></span>
+      <span
+        class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25)_0%,transparent_60%)] opacity-30 mix-blend-overlay"></span>
+    </a> -->
+
+  </div>
+
+  <!-- Optional floating text -->
+  <p class="absolute text-center bottom-8 w-full text-gray-200 text-sm tracking-wider">SCROLL ↓</p>
+</section>
+
 
   <!-- Hero Section End -->
 
@@ -263,85 +272,33 @@
   <!-- Portfolio Section End -->
 
   <!-- Technologies Section Start -->
-  <section id="Stack" class="pt-36 pb-32 bg-fixed bg-cover bg-center"
-    style="background-imae: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('./dist/img/space.jpg');">
-    <div class="container mx-auto">
-      <div class="w-full px-4">
-        <div class="mx-auto text-center mb-16">
-          <h4 class="font-semibold text-purple-500 text-lg">Technologies & Tools</h4>
-          <h2 class="font-bold text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">
-            My Development Stack
-          </h2>
-          <p class="font-medium text-slate-400 md:text-lg">
-            I have experience working with a range of modern web technologies to build robust and scalable applications.
-          </p>
-        </div>
-      </div>
+  <section id="stack" class="py-32 relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950">
+  <div class="container mx-auto px-6 text-center">
+    <h4 class="text-purple-400 font-semibold text-lg mb-3 tracking-widest">TECHNOLOGIES & TOOLS</h4>
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">My Development Stack</h2>
+    <p class="text-slate-400 max-w-2xl mx-auto mb-16">
+      Tools and technologies I use to craft modern, scalable, and beautiful web experiences.
+    </p>
 
-      <!-- Marquee Wrapper -->
-      <div id="logo-marquee" class="w-full overflow-hidden ">
-        <div class="flex animate-marquee gap-20 w-[20%] px-50">
-          <!-- Repeat icons to create seamless scroll -->
-          <div class="flex items-center gap-20">
-            <img src="./dist/img/clients/tailwind.svg" alt="Tailwind CSS"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/html.svg" alt="HTML"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/css3.svg" alt="CSS"
-              class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/javascript.svg" alt="JavaScript"
-              class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/nextjs.svg" alt="Next.js"
-              class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/python.svg" alt="python"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/bootstrap.svg" alt="bootstrap"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/figma.svg" alt="figma"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-          </div>
-          <div class="flex items-center gap-20">
-            <img src="./dist/img/clients/tailwind.svg" alt="Tailwind CSS"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/html.svg" alt="HTML"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/css3.svg" alt="CSS"
-              class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/javascript.svg" alt="JavaScript"
-              class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/nextjs.svg" alt="Next.js"
-              class="h-16  opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/python.svg" alt="python"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/bootstrap.svg" alt="bootstrap"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/figma.svg" alt="figma"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-            <img src="./dist/img/clients/tailwind.svg" alt="Tailwind CSS"
-              class="h-16 opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" />
-          </div>
-        </div>
+    <!-- Tech Logos (Marquee style) -->
+    <div class="relative flex overflow-hidden select-none">
+      <div class="flex animate-marquee gap-16 min-w-full justify-around opacity-80">
+        <img src="./dist/img/clients/html.svg" alt="HTML" class="h-14 hover:scale-110 transition" />
+        <img src="./dist/img/clients/css3.svg" alt="CSS" class="h-14 hover:scale-110 transition" />
+        <img src="./dist/img/clients/javascript.svg" alt="JS" class="h-14 hover:scale-110 transition" />
+        <img src="./dist/img/clients/tailwind.svg" alt="Tailwind" class="h-14 hover:scale-110 transition" />
+        <img src="./dist/img/clients/react.svg" alt="React" class="h-14 hover:scale-110 transition" />
+        <img src="./dist/img/clients/nextjs.svg" alt="NextJS" class="h-14 hover:scale-110 transition" />
+        <img src="./dist/img/clients/python.svg" alt="Python" class="h-14 hover:scale-110 transition" />
+        <img src="./dist/img/clients/figma.svg" alt="Figma" class="h-14 hover:scale-110 transition" />
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Custom animation -->
-  <style>
-    @keyframes marquee {
-      0% {
-        transform: translateX(0%);
-      }
+  <!-- Glow Background -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-purple-600/30 rounded-full blur-[160px]"></div>
+</section>
 
-      100% {
-        transform: translateX(-48%);
-      }
-    }
-
-    .animate-marquee {
-      animation: marquee 22s cubic-bezier(0.15, 0.2, 0.3, 0.9) infinite;
-      width: max-content;
-    }
-  </style>
   <!-- Technologies Section End -->
 
   <!-- Blog Section Start -->
