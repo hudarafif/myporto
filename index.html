@@ -24,7 +24,7 @@
     class="fixed top-1/4 left-1/2 w-[600px] h-[600px] bg-blue-500 rounded-full blur-3xl opacity-20 -z-10  animation-delay-9000">
   </div>
   <!-- Header Start -->
-  <header class="fixed top-0 left-0 w-full bg-white/70 dark:bg-slate-700/10 shadow-sm z-50">
+  <header class="fixed top-0 left-0 w-full bg-white/70 dark:bg-slate-400/10 shadow-sm z-50">
     <div class="container mx-auto px-6 lg:px-12">
       <div class="flex items-center justify-between">
         <!-- Logo -->
@@ -34,69 +34,80 @@
 
         <!-- Hamburger -->
         <button id="hamburger" name="hamburger" type="button" class="block lg:hidden focus:outline-none">
-          <span
-            class="hamburger-line block w-6 h-[2px] bg-slate-800 dark:bg-white mb-1 transition duration-300 ease-in-out origin-top-left"></span>
-          <span
-            class="hamburger-line block w-6 h-[2px] bg-slate-800 dark:bg-white mb-1 transition duration-300 ease-in-out"></span>
-          <span
-            class="hamburger-line block w-6 h-[2px] bg-slate-800 dark:bg-white transition duration-300 ease-in-out origin-bottom-left"></span>
+          <span class="hamburger-line block w-6 h-[2px] dark:bg-white mb-1"></span>
+          <span class="hamburger-line block w-6 h-[2px] dark:bg-white mb-1"></span>
+          <span class="hamburger-line block w-6 h-[2px] dark:bg-white"></span>
         </button>
 
 
         <!-- Nav Menu -->
         <nav id="nav-menu"
-          class="hidden absolute right-6 top-14 py-4 bg-dark shadow-lg rounded-lg w-52 lg:w-auto lg:static lg:shadow-none lg:rounded-none lg:flex">
+          class="hidden gap-8 shadow-sm lg:flex ">
           <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 text-center">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-            <li><a href="#Stack" class="nav-link">Stack</a></li>
-            <li><a href="#blog" class="nav-link">Blog</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="#home" class="hover:text-white transition">Home</a></li>
+            <li><a href="#about" class="hover:text-white transition">About</a></li>
+            <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
+            <li><a href="#stack" class="hover:text-white transition">Stack</a></li>
+            <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
+            <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
           </ul>
         </nav>
+      </div>
+      <div id="mobile-menu"
+        class="hidden absolute right-6 top-16 w-3/4 flex-col items-center lg:hidden 
+         bg-white/10 dark:bg-slate-900/30 border border-white/10 
+         backdrop-blur-md rounded-xl py-6 text-slate-200
+         transition-all duration-300 ease-in-out shadow-lg">
+        <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 text-center">
+            <li><a href="#home" class="hover:text-white transition">Home</a></li>
+            <li><a href="#about" class="hover:text-white transition">About</a></li>
+            <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
+            <li><a href="#stack" class="hover:text-white transition">Stack</a></li>
+            <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
+            <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+          </ul>
       </div>
     </div>
   </header>
   <!-- Header End -->
 
   <!-- Hero Section Start -->
-  <section id="home" class="h-screen flex items-center justify-center text-gray-100 relative overflow-hidden bg-gradient-to-b from-slate-500 to-blue">
-  <div class="z-10 w-full max-w-3xl mx-auto text-center md:text-center px-10 md:px-20">
-    <div class="relative h-[40px] md:h-[50px] overflow-hidden text-center">
-      <div id="text-rotate" class="text-2xl sm:text-2xl md:text-xl font-space font-bold tracking-tight">
-        <span class="font-space block">Welcome to</span>
-        <span class="font-space block">Selamat Datang</span>
-        <span class="block">いらっしゃいませ</span>
-        <span class="block">Sugeng Rawuh</span>
+  <section id="home"
+    class="h-screen flex items-center justify-center text-gray-100 relative overflow-hidden bg-gradient-to-b from-slate-600 to-blue">
+    <div class="z-10 w-full mx-auto text-center md:text-center px-10 md:px-20">
+      <div class="relative h-[40px] md:h-[50px] overflow-hidden text-center">
+        <div id="text-rotate" class="text-2xl sm:text-2xl md:text-xl font-space font-bold tracking-tight">
+          <span class="block">Welcome to</span>
+          <span class="block">Selamat Datang</span>
+          <span class="block">いらっしゃいませ</span>
+          <span class="block">Sugeng Rawuh</span>
+        </div>
       </div>
+
+      <p class="font-porto text-5xl sm:text-6xl md:text-6xl lg:text-9xl text-slate-200 mx-auto md:mx-0 mb-5">
+        my PORTFOLIO
+      </p>
+      <p class="text-lg md:text-lg text-slate-300 mx-auto md:mx-0 mb-10">
+        Lets build something amazing together.
+      </p>
+      <button class="glass-btn">
+        <a href="#portfolio">View My Work</a>
+      </button>
+      <svg style="position: absolute; width: 0; height: 0;">
+        <filter id="glass" x="-50%" y="-50%" width="200%" height="200%">
+          <feImage x="-50%" y="-50%" width="200%" height="200%" result="map" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.02" result="blur" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" result="map" />
+          <feDisplacementMap id="displacementMap" in="blur" scale="2" xChannelSelector="R" yChannelSelector="G">
+          </feDisplacementMap>
+        </filter>
+      </svg>
+
     </div>
 
-    <p 
-    class="font-porto text-5xl sm:text-6xl md:text-6xl text-slate-200 max-w-xl mx-auto md:mx-0 mb-5">
-      my PORTFOLIO
-    </p>
-    <p class="text-lg md:text-lg text-slate-300 max-w-xl mx-auto md:mx-0 mb-10">
-      Lets build something amazing together.
-    </p>
-    <button class="glass-btn">
-      <a href="#portfolio">View My Work</a>
-    </button>
-    <svg style="position: absolute; width: 0; height: 0;">
-      <filter id="glass"
-        x="-50%" y="-50%" width="200%" height="200%">
-        <feImage x="-50%" y="-50%" width="200%" height="200%" result="map"/>
-        <feGaussianBlur in="SourceGraphic" stdDeviation="0.02" result="blur"/>
-        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" result="map"/>
-        <feDisplacementMap id="displacementMap" in="blur" scale="2" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-      </filter>
-    </svg>
-
-  </div>
-
-  <!-- Optional floating text -->
-  <p class="absolute text-center bottom-8 w-full  text-gray-200 text-xs sm:text-sm tracking-wider">SCROLL ↓</p>
-</section>
+    <!-- Optional floating text -->
+    <p class="absolute text-center bottom-8 w-full text-gray-200 text-xs sm:text-sm tracking-wider">SCROLL ↓</p>
+  </section>
 
 
   <!-- Hero Section End -->
@@ -259,73 +270,75 @@
   <!-- Portfolio Section End -->
 
   <!-- Technologies Section Start -->
- <section id="stack" class="py-32 relative overflow-hidden">
-  <div class="container mx-auto px-6 text-center">
-    <h4 class="text-purple-400 font-semibold text-lg mb-3 tracking-widest">
-      TECHNOLOGIES & TOOLS
-    </h4>
-    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-      My Development Stack
-    </h2>
-    <p class="text-slate-400 max-w-2xl mx-auto mb-16">
-      Tools and technologies I use to craft modern, scalable, and beautiful web experiences.
-    </p>
+  <section id="stack" class="py-32 relative overflow-hidden">
+    <div class="container mx-auto px-6 text-center">
+      <h4 class="text-purple-400 font-semibold text-lg mb-3 tracking-widest">
+        TECHNOLOGIES & TOOLS
+      </h4>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        My Development Stack
+      </h2>
+      <p class="text-slate-400 max-w-2xl mx-auto mb-16">
+        Tools and technologies I use to craft modern, scalable, and beautiful web experiences.
+      </p>
 
-    <!-- Tech Grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 place-items-center">
-      <div class="group relative flex flex-col items-center">
-        <img src="./dist/img/clients/html.svg" alt="HTML"
-             class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
-        <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">HTML</p>
-      </div>
+      <!-- Tech Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 place-items-center">
+        <div class="group relative flex flex-col items-center">
+          <img src="./dist/img/clients/html.svg" alt="HTML"
+            class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
+          <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">HTML</p>
+        </div>
 
-      <div class="group relative flex flex-col items-center">
-        <img src="./dist/img/clients/css3.svg" alt="CSS"
-             class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
-        <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">CSS</p>
-      </div>
+        <div class="group relative flex flex-col items-center">
+          <img src="./dist/img/clients/css3.svg" alt="CSS"
+            class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
+          <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">CSS</p>
+        </div>
 
-      <div class="group relative flex flex-col items-center">
-        <img src="./dist/img/clients/javascript.svg" alt="JavaScript"
-             class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
-        <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">JavaScript</p>
-      </div>
+        <div class="group relative flex flex-col items-center">
+          <img src="./dist/img/clients/javascript.svg" alt="JavaScript"
+            class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
+          <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">JavaScript</p>
+        </div>
 
-      <div class="group relative flex flex-col items-center">
-        <img src="./dist/img/clients/tailwind.svg" alt="Tailwind"
-             class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
-        <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">Tailwind</p>
-      </div>
+        <div class="group relative flex flex-col items-center">
+          <img src="./dist/img/clients/tailwind.svg" alt="Tailwind"
+            class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
+          <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">Tailwind</p>
+        </div>
 
-      <div class="group relative flex flex-col items-center">
-        <img src="./dist/img/clients/nextjs.svg" alt="NextJS"
-             class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
-        <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">Next.js</p>
-      </div>
+        <div class="group relative flex flex-col items-center">
+          <img src="./dist/img/clients/nextjs.svg" alt="NextJS"
+            class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
+          <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">Next.js</p>
+        </div>
 
-      <div class="group relative flex flex-col items-center">
-        <img src="./dist/img/clients/react.svg" alt="React"
-             class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
-        <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">React</p>
-      </div>
+        <div class="group relative flex flex-col items-center">
+          <img src="./dist/img/clients/react.svg" alt="React"
+            class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
+          <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">React</p>
+        </div>
 
-      <div class="group relative flex flex-col items-center">
-        <img src="./dist/img/clients/python.svg" alt="Python"
-             class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
-        <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">Python</p>
-      </div>
+        <div class="group relative flex flex-col items-center">
+          <img src="./dist/img/clients/python.svg" alt="Python"
+            class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
+          <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">Python</p>
+        </div>
 
-      <div class="group relative flex flex-col items-center">
-        <img src="./dist/img/clients/figma.svg" alt="Figma"
-             class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
-        <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">Figma</p>
+        <div class="group relative flex flex-col items-center">
+          <img src="./dist/img/clients/figma.svg" alt="Figma"
+            class="h-16 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition duration-300" />
+          <p class="text-slate-400 text-sm mt-3 group-hover:text-white transition">Figma</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Soft glow background -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-purple-600/20 rounded-full blur-[180px]"></div>
-</section>
+    <!-- Soft glow background -->
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-purple-600/20 rounded-full blur-[180px]">
+    </div>
+  </section>
 
 
   <!-- Technologies Section End -->

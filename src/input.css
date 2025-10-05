@@ -7,33 +7,35 @@
 
 body{
     font-family: 'Inter' sans-serif;
-
     scroll-behavior: smooth;
     background-color: #0000
 }
 
 .navbar-fixed{
-    @apply fixed z-[9999] bg-black bg-opacity-80;
-    backdrop-filter: blur(5px);
+    @apply fixed z-[9999] bg-black;
     box-shadow: inset 0 -1px 0 0 rgba(0, 0 ,0 , 0.1);
+  }
+
+#mobile-menu {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* penting untuk Safari */
 }
+
 
 .hamburger-line{
-    @apply w-[30px] h-[2px] my-2 block bg-dark;
+  @apply w-[30px] h-[2px] my-2 block bg-dark;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transform-origin: center;
 }
-
-.hamburger-active {
-  border: 2px solid red;
+.hamburger-active span:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
 }
-
-.hamburger-active > span:nth-child(1) {
-  @apply rotate-45 translate-y-1.5;
+.hamburger-active span:nth-child(2) {
+  opacity: 0;
 }
-.hamburger-active > span:nth-child(2) {
-  @apply scale-0;
-}
-.hamburger-active > span:nth-child(3) {
-  @apply -rotate-45 -translate-y-1.5;
+.hamburger-active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
 }
 
 #to-top {
@@ -91,7 +93,7 @@ body{
     rgba(255,255,255,0.08) 50%,
     rgba(255,255,255,0.03) 100%
   );
-  backdrop-filter: blur(10px) brightness(2.1);
+  backdrop-filter: blur(10px) brightness(1.1);
   filter: url(#glass);
   overflow: hidden;
   transition: all 0.3s ease;
