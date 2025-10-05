@@ -6,6 +6,13 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('hidden');
 
 });
+// navbar auto nutup
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('hamburger-active'); // balikin ikon jadi burger
+    navMenu.classList.add('hidden'); // sembunyiin menu
+  });
+});
 
 window.onscroll = function(){
     const header = document.querySelector('header')
