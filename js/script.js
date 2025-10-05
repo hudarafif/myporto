@@ -167,3 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }, "+=0.2");
     });
   });
+
+// gsap.from("#stack img", {
+//   scrollTrigger: "#stack",
+//   y: 50,
+//   opacity: 0,
+//   duration: 2,
+//   stagger: 0.5,
+//   ease: "power3.out"
+// });
