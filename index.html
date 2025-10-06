@@ -41,8 +41,7 @@
 
 
         <!-- Nav Menu -->
-        <nav id="nav-menu"
-          class="hidden gap-8 lg:flex ">
+        <nav id="nav-menu" class="hidden gap-8 lg:flex ">
           <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 text-center">
             <li><a href="#home" class="hover:text-white transition">Home</a></li>
             <li><a href="#about" class="hover:text-white transition">About</a></li>
@@ -53,19 +52,18 @@
           </ul>
         </nav>
       </div>
-      <div id="mobile-menu"
-        class="hidden absolute right-6 top-16 w-3/4 flex-col items-center lg:hidden 
+      <div id="mobile-menu" class="hidden absolute right-6 top-16 w-3/4 flex-col items-center lg:hidden 
          bg-white/10 dark:bg-slate-900/30 border border-white/10 
          backdrop-blur-md rounded-xl py-6 text-slate-200
          transition-all duration-300 ease-in-out shadow-lg">
         <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 text-center">
-            <li><a href="#home" class="hover:text-white transition">Home</a></li>
-            <li><a href="#about" class="hover:text-white transition">About</a></li>
-            <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
-            <li><a href="#stack" class="hover:text-white transition">Stack</a></li>
-            <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
-            <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
-          </ul>
+          <li><a href="#home" class="hover:text-white transition">Home</a></li>
+          <li><a href="#about" class="hover:text-white transition">About</a></li>
+          <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
+          <li><a href="#stack" class="hover:text-white transition">Stack</a></li>
+          <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
+          <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+        </ul>
       </div>
     </div>
   </header>
@@ -166,7 +164,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:w-10/12 xl:mx-auto px-4">
         <!-- Project Card -->
         <div
-          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
+          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
           <div class="overflow-hidden">
             <img src="./dist/img/portfolio/game.png" alt="Phaser 3 Game"
               class="w-full h-100% object-cover transition duration-300 hover:scale-110">
@@ -176,11 +174,18 @@
             </h3>
             <p class="text-slate-500 text-sm line-clamp-3">An interactive web-based game built using the Phaser 3
               framework.</p>
+            <div class="mt-4 flex justify-end">
+              <a href="https://github.com/hudarafif/gamePhaser"
+                class="inline-flex items-center gap-2 font-medium text-sm text-white bg-slate-600 py-2 px-4 right-3 rounded-md hover:opacity-80">
+                <img src="./dist/img/clients/icons8-info.svg" alt="details-icon" class="inline-block ml-2 h-4 w-4">
+                <span>Details</span>
+              </a>
+            </div>
           </div>
         </div>
         <!-- Project Card -->
         <div
-          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
+          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
           <div class="overflow-hidden"> <img src="./dist/img/portfolio/rentalYuk.png" alt="Rental App"
               class="w-full h-100% object-cover transition duration-300 hover:scale-110">
           </div>
@@ -189,11 +194,18 @@
             </h3>
             <p class="text-slate-500 text-sm line-clamp-3">A full-featured car rental web application with booking
               system.</p>
+            <div class="mt-4 flex justify-end">
+              <a href="https://github.com/hudarafif/companyprofile-rentalyuk"
+                class="inline-flex items-center gap-2 font-medium text-sm text-white bg-slate-600 py-2 px-4 right-3 rounded-md hover:opacity-80">
+                <img src="./dist/img/clients/icons8-info.svg" alt="details-icon" class="inline-block ml-2 h-4 w-4">
+                <span>Details</span>
+              </a>
+            </div>
           </div>
         </div>
         <!-- Project Card -->
         <div
-          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
+          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
           <div class="overflow-hidden">
             <img src="./dist/img/portfolio/weather-app.png" alt="Weather App"
               class="w-full h-100% object-cover transition duration-300 hover:scale-110">
@@ -202,11 +214,18 @@
             <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Weather Forecast App</h3>
             <p class="text-slate-500 text-sm line-clamp-3">A sleek weather application fetching real-time data from API.
             </p>
+            <div class="mt-4 flex justify-end">
+              <a href="https://github.com/hudarafif/Weather-Web-API"
+                class="inline-flex items-center gap-2 font-medium text-sm text-white bg-slate-600 py-2 px-4 right-3 rounded-md hover:opacity-80">
+                <img src="./dist/img/clients/icons8-info.svg" alt="details-icon" class="inline-block ml-2 h-4 w-4">
+                <span>Details</span>
+              </a>
+            </div>
           </div>
         </div>
         <!-- Project Card -->
         <div
-          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
+          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
           <div class="overflow-hidden">
             <img src="./dist/img/portfolio/slicing.png" alt="Company Profile"
               class="w-full h-100% object-cover transition duration-300 hover:scale-110">
@@ -215,11 +234,18 @@
             <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Company Profile Slicing
             </h3>
             <p class="text-slate-500 text-sm line-clamp-3">Pixel-perfect responsive slicing using Figma.</p>
+            <div class="mt-4 flex justify-end">
+              <a href="https://github.com/hudarafif/Slicing-design-figma"
+                class="inline-flex items-center gap-2 font-medium text-sm text-white bg-slate-600 py-2 px-4 right-3 rounded-md hover:opacity-80">
+                <img src="./dist/img/clients/icons8-info.svg" alt="details-icon" class="inline-block ml-2 h-4 w-4">
+                <span>Details</span>
+              </a>
+            </div>
           </div>
         </div>
         <!-- Project Card -->
         <div
-          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
+          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
           <div class="overflow-hidden">
             <img src="./dist/img/portfolio/cropprediction.png" alt="Crop Prediction"
               class="w-full h-100% object-cover transition duration-300 hover:scale-110">
@@ -228,11 +254,18 @@
             <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">Crop Prediction</h3>
             <p class="text-slate-500 text-sm line-clamp-3">A machine learning app that predicts the most suitable crop.
             </p>
+            <div class="mt-4 flex justify-end">
+              <a href="https://github.com/hudarafif/cropRecommendation"
+                class="inline-flex items-center gap-2 font-medium text-sm text-white bg-slate-600 py-2 px-4 right-3 rounded-md hover:opacity-80">
+                <img src="./dist/img/clients/icons8-info.svg" alt="details-icon" class="inline-block ml-2 h-4 w-4">
+                <span>Details</span>
+              </a>
+            </div>
           </div>
         </div>
         <!-- Project Card -->
         <div
-          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
+          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
           <div class="overflow-hidden">
             <img src="./dist/img/portfolio/sigGarden.png" alt="sigGarden"
               class="w-full h-100% object-cover transition duration-300 hover:scale-110">
@@ -240,11 +273,19 @@
           <div class="p-4 flex flex-col flex-1">
             <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">sigGarden</h3>
             <p class="text-slate-500 text-sm line-clamp-3">A responsive web application for gardening enthusiasts.</p>
+            <div class="mt-4 flex justify-end">
+              <a href="https://github.com/hudarafif/historicalplace"
+                class="inline-flex items-center gap-2 font-medium text-sm text-white bg-slate-600 py-2 px-4 right-3 rounded-md hover:opacity-80">
+                <img src="./dist/img/clients/icons8-info.svg" alt="details-icon" class="inline-block ml-2 h-4 w-4">
+                <span>Details</span>
+              </a>
+            </div>
           </div>
         </div>
+
         <!-- Project Card -->
         <div
-          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col h-[300px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
+          class="rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
           <div class="overflow-hidden">
             <img src="./dist/img/portfolio/kopinara.png" alt="sigGarden"
               class="w-full h-100% object-cover transition duration-300 hover:scale-110">
@@ -254,8 +295,16 @@
             <p class="text-slate-500 text-sm line-clamp-3">
               Seamless coffee ordering at your fingertips, a mobile app designed with a clean user interface and a
               secure, integrated payment system.</p>
+            <div class="mt-4 flex justify-end">
+              <a href="https://github.com/hudarafif/kopinara-web"
+                class="inline-flex items-center gap-2 font-medium text-sm text-white bg-slate-600 py-2 px-4 right-3 rounded-md hover:opacity-80">
+                <img src="./dist/img/clients/icons8-info.svg" alt="details-icon" class="inline-block ml-2 h-4 w-4">
+                <span>Details</span>
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
     <div class="w-full flex justify-center mt-6 mb-10 gap-x-4">
@@ -265,8 +314,6 @@
       </button>
     </div>
   </section>
-
-
   <!-- Portfolio Section End -->
 
   <!-- Technologies Section Start -->
@@ -367,9 +414,6 @@
       </div>
     </div>
   </section>
-
-
-
   <!-- Blog Section End -->
 
   <!-- Contact Section Start -->
@@ -486,7 +530,7 @@
 
   <!-- Scroll to Top Button Start -->
   <a href="#home" id="to-top" class="fixed bottom-10 right-10 z-50">
-    <img width="50" height="50" src="https://img.icons8.com/liquid-glass/96/chevron-up.png" alt="chevron-up"/>
+    <img width="50" height="50" src="https://img.icons8.com/liquid-glass/96/chevron-up.png" alt="chevron-up" />
   </a>
 
   <!-- Scroll to Top Button End -->
