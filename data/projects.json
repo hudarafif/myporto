@@ -9,8 +9,8 @@
     {
         "id": 2,
         "title": "RentalYuk Application",
-        "description": "A full-featured car rental web application with booking system.",
-        "image": "dist\/img\/portfolio\/rentalYuk.png",
+        "description": "A full-stack company profile website for a car rental business, built with Laravel, Filament admin panel, and Livewire for dynamic booking features.",
+        "image": "dist\/img\/portfolio\/rentalyuk-application_1776238591.png",
         "link": "https:\/\/github.com\/hudarafif\/companyprofile-rentalyuk"
     },
     {
@@ -58,15 +58,8 @@
     {
         "id": 1776229796,
         "title": "SSOT HR internal",
-        "description": "projek magang",
+        "description": "projek magang OneData HR is an integrated HR management application built with **Laravel 12**, **Tailwind CSS v4**, and **Alpine.js** to support end-to-end people operations in one centralized platform. The system is designed to help HR teams and management run recruitment workflows, manage employee data, monitor performance, and generate operational reports with a consistent, role-based dashboard experience.",
         "image": "dist\/img\/portfolio\/ssot-hr-internal_1776229796.png",
         "link": "https:\/\/github.com\/hudarafif\/onedata"
-    },
-    {
-        "id": 10,
-        "title": "Company Profile Website",
-        "description": "A full-stack company profile website for a car rental business, built with Laravel, Filament admin panel, and Livewire for dynamic booking features.",
-        "image": "dist\/img\/portfolio\/company-profile-website.png",
-        "link": "https:\/\/github.com\/hudarafif\/Company-Profile-Website"
     }
 ]

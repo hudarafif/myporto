@@ -4,6 +4,17 @@ $projects = [];
 if (file_exists($projectsJson)) {
     $projects = json_decode(file_get_contents($projectsJson), true);
 }
+
+$editId = $_GET['edit'] ?? null;
+$editingProject = null;
+if ($editId !== null) {
+    foreach ($projects as $project) {
+        if ((string)($project['id'] ?? '') === (string)$editId) {
+            $editingProject = $project;
+            break;
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,28 +46,48 @@ if (file_exists($projectsJson)) {
             <div class="lg:col-span-1">
                 <div class="glass p-6 rounded-2xl sticky top-8">
                     <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
-                        <i class="fas fa-plus-circle text-purple-500"></i> Add New Project
+                        <i class="fas <?php echo $editingProject ? 'fa-pen-to-square' : 'fa-plus-circle'; ?> text-purple-500"></i>
+                        <?php echo $editingProject ? 'Edit Project' : 'Add New Project'; ?>
                     </h2>
                     <form action="save.php" method="POST" enctype="multipart/form-data" class="space-y-4">
+                        <input type="hidden" name="action" value="<?php echo $editingProject ? 'update' : 'add'; ?>">
+                        <?php if ($editingProject): ?>
+                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($editingProject['id']); ?>">
+                        <?php endif; ?>
                         <div>
                             <label class="block text-sm font-medium text-slate-400 mb-1">Project Title</label>
-                            <input type="text" name="title" required class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-purple-500 outline-none">
+                            <input type="text" name="title" required value="<?php echo htmlspecialchars($editingProject['title'] ?? ''); ?>" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-purple-500 outline-none">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-400 mb-1">Description</label>
-                            <textarea name="description" required rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-purple-500 outline-none"></textarea>
+                            <textarea name="description" required rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-purple-500 outline-none"><?php echo htmlspecialchars($editingProject['description'] ?? ''); ?></textarea>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-400 mb-1">GitHub / Demo Link</label>
-                            <input type="url" name="link" required class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-purple-500 outline-none">
+                            <input type="url" name="link" required value="<?php echo htmlspecialchars($editingProject['link'] ?? ''); ?>" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-purple-500 outline-none">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-400 mb-1">Project Image</label>
-                            <input type="file" name="image" accept="image/*" required class="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 cursor-pointer">
+                            <label class="block text-sm font-medium text-slate-400 mb-1">
+                                Project Image <?php echo $editingProject ? '(optional, only if replacing)' : ''; ?>
+                            </label>
+                            <input id="image-input" type="file" name="image" accept="image/*" <?php echo $editingProject ? '' : 'required'; ?> class="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 cursor-pointer">
+                            <?php if ($editingProject && !empty($editingProject['image'])): ?>
+                                <p class="text-xs text-slate-500 mt-2">Current image:</p>
+                                <img id="current-image" src="../<?php echo htmlspecialchars($editingProject['image']); ?>" class="w-full h-28 object-cover rounded-lg border border-slate-700 mt-2">
+                            <?php endif; ?>
+                            <div id="preview-wrapper" class="mt-3 hidden">
+                                <p class="text-xs text-slate-400 mb-2">New image preview:</p>
+                                <img id="image-preview" src="" alt="Selected image preview" class="w-full h-28 object-cover rounded-lg border border-slate-700">
+                            </div>
                         </div>
-                        <button type="submit" name="action" value="add" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-3 rounded-lg hover:shadow-lg hover:shadow-purple-500/30 transition">
-                            Save Project
-                        </button>
+                        <div class="flex gap-3">
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-3 rounded-lg hover:shadow-lg hover:shadow-purple-500/30 transition">
+                                <?php echo $editingProject ? 'Update Project' : 'Save Project'; ?>
+                            </button>
+                            <?php if ($editingProject): ?>
+                                <a href="index.php" class="w-full text-center bg-slate-700 text-white font-bold py-3 rounded-lg hover:bg-slate-600 transition">Cancel</a>
+                            <?php endif; ?>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -83,6 +114,9 @@ if (file_exists($projectsJson)) {
                                     <div class="text-xs text-slate-500 truncate max-w-xs"><?php echo htmlspecialchars($project['description']); ?></div>
                                 </td>
                                 <td class="p-4 text-right">
+                                    <a href="index.php?edit=<?php echo urlencode($project['id']); ?>" class="text-amber-400 hover:text-amber-300 p-2 inline-block" title="Edit project">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
                                     <form action="save.php" method="POST" onsubmit="return confirm('Delete this project?');" class="inline">
                                         <input type="hidden" name="id" value="<?php echo $project['id']; ?>">
                                         <button type="submit" name="action" value="delete" class="text-red-400 hover:text-red-300 p-2">
@@ -108,4 +142,25 @@ if (file_exists($projectsJson)) {
         </footer>
     </div>
 </body>
+<script>
+    const imageInput = document.getElementById('image-input');
+    const previewWrapper = document.getElementById('preview-wrapper');
+    const imagePreview = document.getElementById('image-preview');
+
+    if (imageInput && previewWrapper && imagePreview) {
+        imageInput.addEventListener('change', function (event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) {
+                previewWrapper.classList.add('hidden');
+                imagePreview.src = '';
+                return;
+            }
+
+            const objectUrl = URL.createObjectURL(file);
+            imagePreview.src = objectUrl;
+            previewWrapper.classList.remove('hidden');
+            imagePreview.onload = () => URL.revokeObjectURL(objectUrl);
+        });
+    }
+</script>
 </html>

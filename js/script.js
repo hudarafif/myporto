@@ -2,10 +2,12 @@
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('mobile-menu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('hamburger-active');
-    navMenu.classList.toggle('hidden');
-});
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('hamburger-active');
+        navMenu.classList.toggle('hidden');
+    });
+}
 
 // Auto-close menu on link click
 document.querySelectorAll('#mobile-menu a').forEach(link => {
@@ -18,14 +20,24 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
 // Scroll to Top Logic
 document.addEventListener('DOMContentLoaded', function() {
     const scrollToTop = document.getElementById('to-top');
+    if (!scrollToTop) return;
 
-    window.addEventListener('scroll', function() {
+    let isTicking = false;
+    const toggleScrollTopVisibility = () => {
         if (window.scrollY > 500) {
             scrollToTop.style.display = 'block';
         } else {
             scrollToTop.style.display = 'none';
         }
-    });
+        isTicking = false;
+    };
+
+    window.addEventListener('scroll', function() {
+        if (!isTicking) {
+            window.requestAnimationFrame(toggleScrollTopVisibility);
+            isTicking = true;
+        }
+    }, { passive: true });
 
     scrollToTop.addEventListener('click', function() {
         window.scrollTo({
@@ -60,10 +72,7 @@ async function loadArticles() {
         const blogContainer = document.getElementById("blog-articles");
         
         if (!blogContainer) return;
-        blogContainer.innerHTML = "";
-
-        articles.slice(0, 6).forEach(article => {
-            blogContainer.innerHTML += `
+        const html = articles.slice(0, 6).map(article => `
             <div class="w-full px-4 lg:w-1/2 xl:w-1/3 blog-card">
               <div class="bg-white dark:bg-slate-700 rounded-xl overflow-hidden shadow-lg mb-10 transform transition duration-300 hover:shadow-2xl">
                 <img src="${article.social_image}" alt="${article.title}" class="w-full">
@@ -84,16 +93,18 @@ async function loadArticles() {
                 </div>
               </div>
             </div>
-          `;
-        });
+          `
+        ).join("");
+
+        blogContainer.innerHTML = html;
 
         // Animate new cards
         gsap.from(".blog-card", {
             scrollTrigger: "#blog",
             y: 50,
             opacity: 0,
-            duration: 0.8,
-            stagger: 0.2,
+            duration: 0.5,
+            stagger: 0.1,
             ease: "power2.out"
         });
 
@@ -101,8 +112,6 @@ async function loadArticles() {
         console.error("❌ Gagal ambil artikel:", err);
     }
 }
-
-loadArticles();
 
 /**
  * Projects from JSON
@@ -116,12 +125,11 @@ async function loadProjects() {
         if (!portfolioContainer) return;
         portfolioContainer.innerHTML = "";
 
-        projects.forEach(project => {
-            portfolioContainer.innerHTML += `
+        const html = projects.map(project => `
             <div class="project-card rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
               <div class="overflow-hidden">
                 <img src="${project.image}" alt="${project.title}"
-                  class="w-full h-48 object-cover transition duration-300 hover:scale-110">
+                  class="w-full h-48 object-cover transition duration-300 hover:scale-110" loading="lazy">
               </div>
               <div class="p-4 flex flex-col flex-1">
                 <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">${project.title}</h3>
@@ -135,8 +143,9 @@ async function loadProjects() {
                 </div>
               </div>
             </div>
-            `;
-        });
+        `).join("");
+
+        portfolioContainer.innerHTML = html;
 
         // Re-run animation for new cards
         gsap.from(".project-card", {
@@ -146,8 +155,8 @@ async function loadProjects() {
             },
             y: 40,
             opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
+            duration: 0.5,
+            stagger: 0.05,
             ease: "power2.out"
         });
 
@@ -156,7 +165,17 @@ async function loadProjects() {
     }
 }
 
-loadProjects();
+// Initialize Content
+async function init() {
+    // Prioritaskan portfolio lokal agar section ini tampil lebih cepat
+    await loadProjects();
+    // Ambil artikel setelah render utama selesai agar initial paint lebih ringan
+    setTimeout(() => {
+        loadArticles();
+    }, 100);
+}
+
+init();
 
 if (refreshBtn) {
     setTimeout(() => refreshBtn.classList.remove("hidden"), 60000);
@@ -172,6 +191,7 @@ if (refreshBtn) {
 document.addEventListener("DOMContentLoaded", () => {
     // Register Plugins
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // 1. Navbar Animation
     gsap.from("#header", {
@@ -230,7 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 4. Section Reveals (Staggered)
-    const sections = ["#about", "#portfolio", "#stack", "#blog", "#contact"];
+    // Portfolio dikecualikan agar tidak bentrok dengan animasi kartu project sendiri.
+    const sections = ["#about", "#stack", "#blog", "#contact"];
     sections.forEach(section => {
         gsap.from(`${section} .container > div`, {
             scrollTrigger: {
@@ -248,25 +269,35 @@ document.addEventListener("DOMContentLoaded", () => {
     // 5. Portfolio Cards Stagger (Handled in loadProjects)
 
     // 6. Tech Stack Floating Animation
-    gsap.utils.toArray("#stack .group").forEach((icon, i) => {
-        gsap.to(icon, {
-            y: -10,
-            repeat: -1,
-            yoyo: true,
-            duration: 2 + Math.random(),
-            ease: "sine.inOut",
-            delay: i * 0.2
+    // Tunda animasi infinite sampai section stack terlihat.
+    if (!prefersReducedMotion) {
+        gsap.utils.toArray("#stack .group").forEach((icon, i) => {
+            gsap.to(icon, {
+                y: -10,
+                repeat: -1,
+                yoyo: true,
+                duration: 2 + Math.random(),
+                ease: "sine.inOut",
+                delay: i * 0.2,
+                scrollTrigger: {
+                    trigger: "#stack",
+                    start: "top 85%",
+                    toggleActions: "play pause play pause"
+                }
+            });
         });
-    });
+    }
 
     // 7. Parallax Background effect for Hero
-    gsap.to("#home", {
-        scrollTrigger: {
-            trigger: "#home",
-            start: "top top",
-            end: "bottom top",
-            scrub: true
-        },
-        backgroundPositionY: "50%"
-    });
+    if (!prefersReducedMotion) {
+        gsap.to("#home", {
+            scrollTrigger: {
+                trigger: "#home",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            },
+            backgroundPositionY: "50%"
+        });
+    }
 });
