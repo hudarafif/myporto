@@ -36,7 +36,7 @@ if ($editId !== null) {
                 <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">Project Manager</h1>
                 <p class="text-slate-400 mt-2">Manage your portfolio items (Local Admin)</p>
             </div>
-            <a href="../index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
+            <a href="../index.php" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
                 <i class="fas fa-arrow-left"></i> Back to Site
             </a>
         </header>
@@ -65,6 +65,20 @@ if ($editId !== null) {
                         <div>
                             <label class="block text-sm font-medium text-slate-400 mb-1">GitHub / Demo Link</label>
                             <input type="url" name="link" required value="<?php echo htmlspecialchars($editingProject['link'] ?? ''); ?>" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-purple-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-1">Category</label>
+                            <select name="category" required class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-purple-500 outline-none">
+                                <?php
+                                $categories = ['Web App', 'Mobile', 'Machine Learning', 'UI/UX', 'Game'];
+                                $selectedCategory = $editingProject['category'] ?? 'Web App';
+                                foreach ($categories as $category):
+                                ?>
+                                    <option value="<?php echo htmlspecialchars($category); ?>" <?php echo $selectedCategory === $category ? 'selected' : ''; ?>>
+                                        <?php echo htmlspecialchars($category); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-400 mb-1">

@@ -64,11 +64,280 @@ if (form) {
 
 // Blog Articles from API
 const refreshBtn = document.getElementById("refresh-btn");
+const PROJECTS_CACHE_KEY = "myporto_projects_cache_v1";
+const INITIAL_PORTFOLIO_LIMIT = 6;
+const PORTFOLIO_STEP = 3;
+const MOBILE_MEDIA_QUERY = window.matchMedia("(max-width: 767px)");
+const portfolioState = {
+    projects: [],
+    visibleCount: INITIAL_PORTFOLIO_LIMIT,
+    selectedCategory: "All",
+    swiperInstance: null,
+    isMobileSlider: MOBILE_MEDIA_QUERY.matches
+};
+
+function fetchJsonWithTimeout(url, timeoutMs = 8000) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+    return fetch(url, { signal: controller.signal })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`Request failed with status ${res.status}`);
+            }
+            return res.json();
+        })
+        .finally(() => clearTimeout(timeoutId));
+}
+
+function getProjectCategory(project) {
+    return project.category || "Other";
+}
+
+function getFilteredProjects() {
+    if (portfolioState.selectedCategory === "All") {
+        return portfolioState.projects;
+    }
+    return portfolioState.projects.filter(
+        (project) => getProjectCategory(project) === portfolioState.selectedCategory
+    );
+}
+
+function buildProjectCard(project) {
+    const category = getProjectCategory(project);
+    return `
+            <div class="project-card rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
+              <div class="overflow-hidden">
+                <img src="${project.image}" alt="${project.title}"
+                  class="w-full h-48 object-cover transition duration-300 hover:scale-110"
+                  loading="lazy" decoding="async">
+              </div>
+              <div class="p-4 flex flex-col flex-1">
+                <span class="inline-block mb-2 text-xs font-semibold text-purple-600 dark:text-purple-300">${category}</span>
+                <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">${project.title}</h3>
+                <p class="text-slate-500 text-sm line-clamp-3">${project.description}</p>
+                <div class="mt-4 flex justify-end">
+                  <a href="${project.link}" target="_blank"
+                    class="inline-flex items-center gap-2 font-medium text-sm text-white bg-slate-600 py-2 px-4 rounded-md hover:opacity-80">
+                    <img src="./dist/img/clients/icons8-info.svg" alt="details-icon" class="inline-block ml-2 h-4 w-4" loading="lazy" decoding="async">
+                    <span>Details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+        `;
+}
+
+function renderCategoryFilters() {
+    const filterContainer = document.getElementById("portfolio-filters");
+    if (!filterContainer) return;
+
+    const categories = ["All", ...new Set(portfolioState.projects.map(getProjectCategory))];
+    const chips = categories.map((category) => {
+        const isActive = portfolioState.selectedCategory === category;
+        const classes = isActive
+            ? "bg-purple-600 text-white"
+            : "bg-slate-700 text-slate-200 hover:bg-slate-600";
+        return `<button type="button" data-category="${category}" class="portfolio-filter-chip ${classes} text-xs md:text-sm font-medium py-1.5 px-3 rounded-full transition">${category}</button>`;
+    }).join("");
+
+    filterContainer.innerHTML = chips;
+}
+
+function initOrUpdatePortfolioSwiper() {
+    if (!portfolioState.isMobileSlider || !window.Swiper) return;
+    const container = document.querySelector("#portfolio-grid.swiper");
+    if (!container) return;
+
+    if (portfolioState.swiperInstance) {
+        portfolioState.swiperInstance.update();
+        return;
+    }
+
+    portfolioState.swiperInstance = new Swiper("#portfolio-grid.swiper", {
+        slidesPerView: 1.08,
+        spaceBetween: 14,
+        centeredSlides: false,
+        pagination: {
+            el: "#portfolio-mobile-pagination",
+            clickable: true
+        },
+        breakpoints: {
+            500: {
+                slidesPerView: 1.2
+            },
+            640: {
+                slidesPerView: 1.35
+            }
+        }
+    });
+}
+
+function destroyPortfolioSwiper() {
+    if (portfolioState.swiperInstance) {
+        portfolioState.swiperInstance.destroy(true, true);
+        portfolioState.swiperInstance = null;
+    }
+}
+
+function updatePortfolioControls() {
+    const loadMoreBtn = document.getElementById("portfolio-load-more");
+    const showLessBtn = document.getElementById("portfolio-show-less");
+    const mobilePagination = document.getElementById("portfolio-mobile-pagination");
+    if (!loadMoreBtn || !showLessBtn) return;
+
+    const total = getFilteredProjects().length;
+    const visible = portfolioState.visibleCount;
+
+    if (mobilePagination) {
+        mobilePagination.classList.toggle("hidden", !portfolioState.isMobileSlider);
+    }
+
+    if (portfolioState.isMobileSlider) {
+        loadMoreBtn.classList.add("hidden");
+        showLessBtn.classList.add("hidden");
+        return;
+    }
+
+    if (total <= INITIAL_PORTFOLIO_LIMIT) {
+        loadMoreBtn.classList.add("hidden");
+        showLessBtn.classList.add("hidden");
+        return;
+    }
+
+    loadMoreBtn.classList.toggle("hidden", visible >= total);
+    showLessBtn.classList.toggle("hidden", visible <= INITIAL_PORTFOLIO_LIMIT);
+}
+
+function renderProjects(animateNewCount = 0) {
+    const portfolioContainer = document.getElementById("portfolio-grid");
+    if (!portfolioContainer) return;
+
+    const filteredProjects = getFilteredProjects();
+    portfolioState.visibleCount = Math.min(portfolioState.visibleCount, Math.max(filteredProjects.length, INITIAL_PORTFOLIO_LIMIT));
+    const visibleProjects = portfolioState.isMobileSlider
+        ? filteredProjects
+        : filteredProjects.slice(0, portfolioState.visibleCount);
+    const html = visibleProjects.map(buildProjectCard).join("");
+
+    if (portfolioState.isMobileSlider) {
+        destroyPortfolioSwiper();
+        portfolioContainer.className = "swiper xl:w-10/12 xl:mx-auto px-4";
+        portfolioContainer.style.minHeight = "";
+        portfolioContainer.innerHTML = `
+            <div class="swiper-wrapper">
+                ${visibleProjects.map(project => `<div class="swiper-slide">${buildProjectCard(project)}</div>`).join("")}
+            </div>
+        `;
+    } else {
+        destroyPortfolioSwiper();
+        portfolioContainer.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:w-10/12 xl:mx-auto px-4";
+        portfolioContainer.style.minHeight = "400px";
+        portfolioContainer.innerHTML = html;
+    }
+
+    renderCategoryFilters();
+    updatePortfolioControls();
+    initOrUpdatePortfolioSwiper();
+
+    if (portfolioState.isMobileSlider) {
+        return;
+    }
+
+    if (animateNewCount > 0 && window.gsap) {
+        const cards = portfolioContainer.querySelectorAll(".project-card");
+        const start = Math.max(0, cards.length - animateNewCount);
+        const newCards = Array.from(cards).slice(start);
+        gsap.from(newCards, {
+            y: 18,
+            opacity: 0,
+            duration: 0.35,
+            stagger: 0.05,
+            ease: "power2.out",
+            immediateRender: false
+        });
+        return;
+    }
+
+    if (!window.gsap || !window.ScrollTrigger) return;
+    ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars && trigger.vars.id === "portfolio-cards") {
+            trigger.kill();
+        }
+    });
+    gsap.killTweensOf(".project-card");
+    gsap.set(".project-card", { opacity: 1, y: 0 });
+    gsap.from(".project-card", {
+        scrollTrigger: {
+            id: "portfolio-cards",
+            trigger: "#portfolio-grid",
+            start: "top 85%",
+            once: true,
+        },
+        y: 24,
+        opacity: 0,
+        duration: 0.45,
+        stagger: 0.04,
+        ease: "power2.out",
+        immediateRender: false,
+        overwrite: "auto",
+        onComplete: () => gsap.set(".project-card", { clearProps: "opacity,transform" })
+    });
+}
+
+function bindPortfolioControls() {
+    const loadMoreBtn = document.getElementById("portfolio-load-more");
+    const showLessBtn = document.getElementById("portfolio-show-less");
+    const filterContainer = document.getElementById("portfolio-filters");
+    if (!loadMoreBtn || !showLessBtn || !filterContainer) return;
+
+    loadMoreBtn.addEventListener("click", () => {
+        const previousVisible = portfolioState.visibleCount;
+        const totalFiltered = getFilteredProjects().length;
+        portfolioState.visibleCount = Math.min(
+            portfolioState.visibleCount + PORTFOLIO_STEP,
+            totalFiltered
+        );
+        const newlyAdded = portfolioState.visibleCount - previousVisible;
+        renderProjects(newlyAdded);
+    });
+
+    showLessBtn.addEventListener("click", () => {
+        portfolioState.visibleCount = Math.min(INITIAL_PORTFOLIO_LIMIT, portfolioState.projects.length);
+        renderProjects(0);
+        const portfolioSection = document.getElementById("portfolio");
+        if (portfolioSection) {
+            portfolioSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    });
+
+    filterContainer.addEventListener("click", (event) => {
+        const target = event.target.closest(".portfolio-filter-chip");
+        if (!target) return;
+        const nextCategory = target.getAttribute("data-category");
+        if (!nextCategory) return;
+
+        portfolioState.selectedCategory = nextCategory;
+        portfolioState.visibleCount = INITIAL_PORTFOLIO_LIMIT;
+        renderProjects(0);
+    });
+
+    const handleViewportChange = (event) => {
+        portfolioState.isMobileSlider = event.matches;
+        portfolioState.visibleCount = INITIAL_PORTFOLIO_LIMIT;
+        renderProjects(0);
+    };
+
+    if (typeof MOBILE_MEDIA_QUERY.addEventListener === "function") {
+        MOBILE_MEDIA_QUERY.addEventListener("change", handleViewportChange);
+    } else if (typeof MOBILE_MEDIA_QUERY.addListener === "function") {
+        MOBILE_MEDIA_QUERY.addListener(handleViewportChange);
+    }
+}
 
 async function loadArticles() {
     try {
-        const res = await fetch("https://dev.to/api/articles?tag=javascript");
-        const articles = await res.json();
+        const articles = await fetchJsonWithTimeout("https://dev.to/api/articles?tag=javascript", 7000);
         const blogContainer = document.getElementById("blog-articles");
         
         if (!blogContainer) return;
@@ -99,14 +368,16 @@ async function loadArticles() {
         blogContainer.innerHTML = html;
 
         // Animate new cards
-        gsap.from(".blog-card", {
-            scrollTrigger: "#blog",
-            y: 50,
-            opacity: 0,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "power2.out"
-        });
+        if (window.gsap) {
+            gsap.from(".blog-card", {
+                scrollTrigger: "#blog",
+                y: 50,
+                opacity: 0,
+                duration: 0.5,
+                stagger: 0.1,
+                ease: "power2.out"
+            });
+        }
 
     } catch (err) {
         console.error("❌ Gagal ambil artikel:", err);
@@ -117,62 +388,67 @@ async function loadArticles() {
  * Projects from JSON
  */
 async function loadProjects() {
+    const portfolioContainer = document.getElementById("portfolio-grid");
+    if (!portfolioContainer) return;
+
+    // Instant first paint from local cache (if available).
+    const cached = localStorage.getItem(PROJECTS_CACHE_KEY);
+    if (cached) {
+        try {
+            const parsed = JSON.parse(cached);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+                portfolioState.projects = parsed.map((project) => ({
+                    ...project,
+                    category: project.category || "Web"
+                }));
+                if (!["All", ...new Set(portfolioState.projects.map(getProjectCategory))].includes(portfolioState.selectedCategory)) {
+                    portfolioState.selectedCategory = "All";
+                }
+                portfolioState.visibleCount = Math.min(INITIAL_PORTFOLIO_LIMIT, parsed.length);
+                renderProjects(0);
+            }
+        } catch (err) {
+            console.warn("Invalid cached projects data:", err);
+        }
+    }
+
     try {
-        const res = await fetch("data/projects.json");
-        const projects = await res.json();
-        const portfolioContainer = document.getElementById("portfolio-grid");
-        
-        if (!portfolioContainer) return;
-        portfolioContainer.innerHTML = "";
+        const projects = await fetchJsonWithTimeout("data/projects.json", 6000);
+        if (!Array.isArray(projects)) {
+            throw new Error("Invalid projects format");
+        }
 
-        const html = projects.map(project => `
-            <div class="project-card rounded-lg shadow-md overflow-hidden bg-white dark:bg-slate-700 max-w-sm mx-auto flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-xl">
-              <div class="overflow-hidden">
-                <img src="${project.image}" alt="${project.title}"
-                  class="w-full h-48 object-cover transition duration-300 hover:scale-110" loading="lazy">
-              </div>
-              <div class="p-4 flex flex-col flex-1">
-                <h3 class="font-semibold text-lg text-slate-900 dark:text-white mb-2 line-clamp-2">${project.title}</h3>
-                <p class="text-slate-500 text-sm line-clamp-3">${project.description}</p>
-                <div class="mt-4 flex justify-end">
-                  <a href="${project.link}" target="_blank"
-                    class="inline-flex items-center gap-2 font-medium text-sm text-white bg-slate-600 py-2 px-4 rounded-md hover:opacity-80">
-                    <img src="./dist/img/clients/icons8-info.svg" alt="details-icon" class="inline-block ml-2 h-4 w-4">
-                    <span>Details</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-        `).join("");
-
-        portfolioContainer.innerHTML = html;
-
-        // Re-run animation for new cards
-        gsap.from(".project-card", {
-            scrollTrigger: {
-                trigger: "#portfolio-grid",
-                start: "top 85%",
-            },
-            y: 40,
-            opacity: 0,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: "power2.out"
-        });
-
+        portfolioState.projects = projects.map((project) => ({
+            ...project,
+            category: project.category || "Web"
+        }));
+        if (!["All", ...new Set(portfolioState.projects.map(getProjectCategory))].includes(portfolioState.selectedCategory)) {
+            portfolioState.selectedCategory = "All";
+        }
+        portfolioState.visibleCount = Math.min(INITIAL_PORTFOLIO_LIMIT, projects.length);
+        renderProjects(0);
+        localStorage.setItem(PROJECTS_CACHE_KEY, JSON.stringify(portfolioState.projects));
     } catch (err) {
         console.error("❌ Gagal ambil project:", err);
+        if (!cached) {
+            portfolioContainer.innerHTML = `
+                <div class="col-span-full text-center py-20 opacity-70">
+                    Failed to load projects. Please refresh the page.
+                </div>
+            `;
+        }
     }
 }
 
 // Initialize Content
 async function init() {
+    bindPortfolioControls();
     // Prioritaskan portfolio lokal agar section ini tampil lebih cepat
-    await loadProjects();
+    loadProjects();
     // Ambil artikel setelah render utama selesai agar initial paint lebih ringan
     setTimeout(() => {
         loadArticles();
-    }, 100);
+    }, 300);
 }
 
 init();
@@ -189,6 +465,10 @@ if (refreshBtn) {
  * GSAP ANIMATIONS
  */
 document.addEventListener("DOMContentLoaded", () => {
+    if (!window.gsap || !window.ScrollTrigger || !window.TextPlugin) {
+        return;
+    }
+
     // Register Plugins
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

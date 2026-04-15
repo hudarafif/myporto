@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $title = $_POST['title'] ?? '';
         $description = $_POST['description'] ?? '';
         $link = $_POST['link'] ?? '';
+        $category = $_POST['category'] ?? 'Web App';
         
         // Handle Image Upload
         if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
@@ -29,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     "title" => $title,
                     "description" => $description,
                     "image" => "dist/img/portfolio/" . $filename,
-                    "link" => $link
+                    "link" => $link,
+                    "category" => $category
                 ];
                 $projects[] = $newProject;
                 file_put_contents($projectsJson, json_encode($projects, JSON_PRETTY_PRINT));
@@ -42,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $title = $_POST['title'] ?? '';
         $description = $_POST['description'] ?? '';
         $link = $_POST['link'] ?? '';
+        $category = $_POST['category'] ?? 'Web App';
 
         foreach ($projects as &$project) {
             if ((string)($project['id'] ?? '') !== (string)$id) {
@@ -51,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $project['title'] = $title;
             $project['description'] = $description;
             $project['link'] = $link;
+            $project['category'] = $category;
 
             // Replace image only if a new file is uploaded
             if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
