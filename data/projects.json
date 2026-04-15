@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "title": "Simple Game with Phaser 3",
+        "description": "An interactive web-based game built using the Phaser 3 framework.",
+        "image": "dist\/img\/portfolio\/game.png",
+        "link": "https:\/\/github.com\/hudarafif\/gamePhaser"
+    },
+    {
+        "id": 2,
+        "title": "RentalYuk Application",
+        "description": "A full-featured car rental web application with booking system.",
+        "image": "dist\/img\/portfolio\/rentalYuk.png",
+        "link": "https:\/\/github.com\/hudarafif\/companyprofile-rentalyuk"
+    },
+    {
+        "id": 3,
+        "title": "Weather Forecast App",
+        "description": "A sleek weather application fetching real-time data from API.",
+        "image": "dist\/img\/portfolio\/weather-app.png",
+        "link": "https:\/\/github.com\/hudarafif\/Weather-Web-API"
+    },
+    {
+        "id": 4,
+        "title": "Company Profile Slicing",
+        "description": "Pixel-perfect responsive slicing using Figma.",
+        "image": "dist\/img\/portfolio\/slicing.png",
+        "link": "https:\/\/github.com\/hudarafif\/Slicing-design-figma"
+    },
+    {
+        "id": 5,
+        "title": "Crop Prediction",
+        "description": "A machine learning app that predicts the most suitable crop.",
+        "image": "dist\/img\/portfolio\/cropprediction.png",
+        "link": "https:\/\/github.com\/hudarafif\/cropRecommendation"
+    },
+    {
+        "id": 6,
+        "title": "sigGarden",
+        "description": "A responsive web application for gardening enthusiasts.",
+        "image": "dist\/img\/portfolio\/sigGarden.png",
+        "link": "https:\/\/github.com\/hudarafif\/historicalplace"
+    },
+    {
+        "id": 7,
+        "title": "Kopinara",
+        "description": "Seamless coffee ordering at your fingertips, a mobile app designed with a clean user interface and a secure, integrated payment system.",
+        "image": "dist\/img\/portfolio\/kopinara.png",
+        "link": "https:\/\/github.com\/hudarafif\/kopinara-web"
+    },
+    {
+        "id": 8,
+        "title": "Inventory Management",
+        "description": "A web application for inventory management, with a user-friendly interface and secure authentication.",
+        "image": "dist\/img\/portfolio\/inventory-app.png",
+        "link": "https:\/\/github.com\/hudarafif\/simple-inventuries"
+    },
+    {
+        "id": 1776229796,
+        "title": "SSOT HR internal",
+        "description": "projek magang",
+        "image": "dist\/img\/portfolio\/ssot-hr-internal_1776229796.png",
+        "link": "https:\/\/github.com\/hudarafif\/onedata"
+    },
+    {
+        "id": 10,
+        "title": "Company Profile Website",
+        "description": "A full-stack company profile website for a car rental business, built with Laravel, Filament admin panel, and Livewire for dynamic booking features.",
+        "image": "dist\/img\/portfolio\/company-profile-website.png",
+        "link": "https:\/\/github.com\/hudarafif\/Company-Profile-Website"
+    }
+]
